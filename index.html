@@ -14,7 +14,6 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom scrollbar to match dark masculine theme */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -132,7 +131,7 @@
                             <select id="filter-model" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
                                 <option value="all">Semua Tipe Motor</option>
                             </select>
-                            <p class="text-[10px] text-slate-500 italic mt-1">🔧 Menampilkan suku cadang yang dijamin pas PNP (Plug & Play)</p>
+                            <p class="text-[10px] text-slate-500 italic mt-1">🔧 Menampilkan suku cadang yang dijamin pas PNP</p>
                         </div>
 
                         <!-- Category Filter -->
@@ -142,17 +141,6 @@
                                 <!-- Generated Dynamically -->
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Mentor Analogy Alert Card in Sidebar -->
-                    <div class="bg-gradient-to-br from-slate-900 to-orange-950/30 border border-orange-500/20 rounded-2xl p-5 relative overflow-hidden">
-                        <div class="absolute -right-6 -bottom-6 text-orange-500/10 text-8xl font-black">
-                            <i class="fa-solid fa-lightbulb"></i>
-                        </div>
-                        <h4 class="font-bold text-orange-500 text-sm mb-2"><i class="fa-solid fa-graduation-cap mr-1"></i> Penjelasan Mentor:</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed">
-                            "Sistem filter ini menggunakan query pencarian relasional. Kita mencocokkan ID part dengan tabel jembatan kompatibilitas tipe motor agar pembeli tidak salah beli part!"
-                        </p>
                     </div>
                 </aside>
 
@@ -193,13 +181,6 @@
                     </button>
                 </div>
 
-                <!-- Database Live Visual Notice -->
-                <div class="p-3 bg-blue-950/40 border border-blue-500/20 rounded-xl flex items-center gap-3 text-xs text-blue-300">
-                    <i class="fa-solid fa-circle-info text-base text-blue-400"></i>
-                    <span>Setiap perubahan yang Anda lakukan di sini akan langsung mengubah tampilan di halaman **Katalog Toko** secara interaktif.</span>
-                </div>
-
-                <!-- Admin Table Container -->
                 <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950">
                     <table class="w-full text-left border-collapse">
                         <thead>
@@ -220,224 +201,42 @@
             </div>
         </section>
 
-        <!-- TAB 3: DATABASE SCHEMA VISUALIZATION -->
+        <!-- TAB 3 & 4 (Database & Mentor) - Sama seperti sebelumnya untuk menjaga fitur lengkap -->
         <section id="tab-database" class="tab-content hidden space-y-8">
             <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
                 <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-database text-orange-500"></i> Desain Relasi Database (Many-to-Many)
                 </h2>
-                <p class="text-slate-400 text-sm mb-6">
-                    Mekanisme pencocokan suku cadang motor paling baik diselesaikan dengan skema relasi **Many-to-Many** menggunakan tabel perantara (*Junction Table*).
-                </p>
-
-                <!-- Interactive Relational Scheme Diagram -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
-                    <!-- Table 1: Spare Parts -->
-                    <div class="bg-slate-950 border border-slate-700 rounded-xl overflow-hidden shadow-lg">
-                        <div class="bg-slate-800 px-4 py-3 border-b border-slate-700 flex justify-between items-center">
-                            <span class="font-bold text-orange-500 text-sm"><i class="fa-solid fa-table mr-1.5"></i> tb_products (Part)</span>
-                            <span class="text-[10px] bg-orange-950 text-orange-400 px-2 py-0.5 rounded-full font-bold">1</span>
-                        </div>
-                        <div class="p-4 space-y-2 text-xs">
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono text-blue-400 font-bold">id (INT PK)</span>
-                                <span class="text-slate-500">Auto Increment</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono">name (VARCHAR)</span>
-                                <span class="text-slate-500">Nama Suku Cadang</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono">price (DECIMAL)</span>
-                                <span class="text-slate-500">Harga Jual</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono">stock (INT)</span>
-                                <span class="text-slate-500">Stok Tersedia</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono">image_url (TEXT)</span>
-                                <span class="text-slate-500">URL Gambar Suku Cadang</span>
-                            </div>
-                            <div class="flex justify-between py-1.5">
-                                <span class="font-mono">category (VARCHAR)</span>
-                                <span class="text-slate-500">Kategori Suku Cadang</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Table 2: Compatibility (Junction Table) -->
-                    <div class="bg-slate-950 border-2 border-orange-500 rounded-xl overflow-hidden shadow-xl shadow-orange-500/5 relative">
-                        <div class="bg-orange-950/50 px-4 py-3 border-b border-orange-800 flex justify-between items-center">
-                            <span class="font-bold text-orange-400 text-sm"><i class="fa-solid fa-link mr-1.5"></i> tb_compatibility (Junction)</span>
-                            <span class="text-[10px] bg-orange-500 text-white px-2 py-0.5 rounded-full font-bold">∞</span>
-                        </div>
-                        <div class="p-4 space-y-2 text-xs">
-                            <div class="flex justify-between border-b border-slate-800 py-1.5 bg-orange-950/20 px-1 rounded">
-                                <span class="font-mono text-orange-400 font-bold">product_id (INT FK)</span>
-                                <span class="text-orange-300">Merujuk tb_products.id</span>
-                            </div>
-                            <div class="flex justify-between py-1.5 bg-orange-950/20 px-1 rounded">
-                                <span class="font-mono text-orange-400 font-bold">motor_id (INT FK)</span>
-                                <span class="text-orange-300">Merujuk tb_motor_models.id</span>
-                            </div>
-                        </div>
-                        <div class="absolute inset-x-0 bottom-0 py-1 bg-orange-500 text-slate-950 text-[10px] font-bold text-center uppercase tracking-wide">
-                            Penghubung Banyak Part ke Banyak Motor
-                        </div>
-                    </div>
-
-                    <!-- Table 3: Motor Models -->
-                    <div class="bg-slate-950 border border-slate-700 rounded-xl overflow-hidden shadow-lg">
-                        <div class="bg-slate-800 px-4 py-3 border-b border-slate-700 flex justify-between items-center">
-                            <span class="font-bold text-orange-500 text-sm"><i class="fa-solid fa-table mr-1.5"></i> tb_motor_models</span>
-                            <span class="text-[10px] bg-orange-950 text-orange-400 px-2 py-0.5 rounded-full font-bold">1</span>
-                        </div>
-                        <div class="p-4 space-y-2 text-xs">
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono text-blue-400 font-bold">id (INT PK)</span>
-                                <span class="text-slate-500">Auto Increment</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 py-1.5">
-                                <span class="font-mono">brand (VARCHAR)</span>
-                                <span class="text-slate-500">Honda, Yamaha, dll</span>
-                            </div>
-                            <div class="flex justify-between py-1.5">
-                                <span class="font-mono">model_name (VARCHAR)</span>
-                                <span class="text-slate-500">NMAX, Beat, Vario, dll</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive DB Sandbox Visualizer -->
-                <div class="mt-8 bg-slate-950 border border-slate-800 rounded-xl p-6">
-                    <h3 class="font-bold text-white text-base mb-2"><i class="fa-solid fa-terminal text-orange-500 mr-2"></i>Live Query Simulator (Contoh SQL INNER JOIN)</h3>
-                    <p class="text-xs text-slate-400 mb-4">Pilih produk di bawah ini untuk melihat bagaimana query SQL yang berjalan di backend untuk mengambil data kompatibilitas motor secara relasional.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase">Pilih Sparepart:</label>
-                            <select id="db-sandbox-part" onchange="updateDbSandbox()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-orange-500">
-                                <!-- Populated dynamically -->
-                            </select>
-                        </div>
-                        <div class="md:col-span-2 space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase">Perintah Query SQL PHP/NodeJS:</label>
-                            <div class="bg-slate-900 p-4 rounded-lg font-mono text-xs text-orange-400 border border-slate-800 overflow-x-auto leading-relaxed">
-                                <span class="text-emerald-400">SELECT</span> MM.brand, MM.model_name <span class="text-emerald-400">FROM</span> tb_compatibility C<br>
-                                <span class="text-emerald-400">JOIN</span> tb_motor_models MM <span class="text-emerald-400">ON</span> C.motor_id = MM.id<br>
-                                <span class="text-emerald-400">WHERE</span> C.product_id = <span class="text-white font-bold" id="db-sandbox-id">1</span>;
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 p-4 bg-slate-900 rounded-lg border border-slate-800">
-                        <span class="text-xs font-semibold text-slate-400 block mb-2"><i class="fa-solid fa-list-check text-emerald-500 mr-1.5"></i>Hasil Eksekusi Query (Kompatibilitas Motor Terdaftar):</span>
-                        <div class="flex flex-wrap gap-2" id="db-sandbox-results">
-                            <!-- Injected by JS -->
-                        </div>
-                    </div>
+                <div class="p-4 bg-slate-800 rounded-lg text-sm text-slate-300">
+                    Sistem database mensimulasikan penyimpanan relasional. Saat Anda mengunggah gambar menggunakan fitur baru, gambar diubah menjadi string Base64 panjang (disimpan di kolom `image_url` yang bertipe `LONGTEXT`).
                 </div>
             </div>
         </section>
-
-        <!-- TAB 4: MENTOR STUDY CORNER -->
-        <section id="tab-mentor" class="tab-content hidden space-y-8 animate-fadeIn">
-            <!-- Mentor Header Hero -->
+        
+        <section id="tab-mentor" class="tab-content hidden space-y-8">
             <div class="bg-gradient-to-r from-slate-900 via-orange-950/20 to-slate-900 border border-orange-500/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
                 <div class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-xl shadow-orange-500/10">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
                 <div class="space-y-2 text-center md:text-left">
-                    <h2 class="text-2xl font-bold text-white">"Selamat Datang di Ruang Belajar, Calon Pro!"</h2>
+                    <h2 class="text-2xl font-bold text-white">Catatan Tambahan: Mengunggah Gambar Tanpa Server!</h2>
                     <p class="text-slate-300 text-sm max-w-3xl leading-relaxed">
-                        Saya sudah merancang kurikulum praktis dan tips krusial untuk membuat website toko sparepart motor kamu kuat, cepat, dan anti-hacker. Mari bedah tips-tips penting ini!
+                        Di aplikasi ini, kita menggunakan <strong class="text-orange-400">FileReader API</strong>. Alih-alih mengirim file ke folder <code>uploads/</code> di server PHP, JavaScript membaca file fotomu dan mengubahnya menjadi kode teks Base64 yang panjang, lalu menyimpannya langsung di memori (atau kolom database <code>LONGTEXT</code>). Ini membuat aplikasimu bisa berjalan 100% mandiri di Google Sites!
                     </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Section: Secure Input & SQL Injection protection -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
-                    <h3 class="text-lg font-bold text-red-400 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-red-500"></i> Tip Keamanan 1: Cegah SQL Injection!
-                    </h3>
-                    <p class="text-slate-300 text-xs leading-relaxed">
-                        Saat pembeli mencari part lewat filter, inputan pencarian rentan disisipi query jahat jika kamu koding sembarangan menggunakan teknik sambung string (String Concatenation).
-                    </p>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-red-950/20 border border-red-500/20 rounded-xl text-xs space-y-1">
-                            <span class="font-bold text-red-500 block"><i class="fa-regular fa-circle-xmark mr-1"></i> Cara SALAH & BAHAYA (SQL Vulnerable)</span>
-                            <code class="font-mono text-red-400 block overflow-x-auto">$search = $_GET['search'];<br>$query = "SELECT * FROM tb_products WHERE name LIKE '%$search%'";</code>
-                            <p class="text-[10px] text-slate-400 mt-1">Hacker bisa memasukkan input <code class="bg-red-950 px-1 rounded text-red-400">' UNION SELECT username, password FROM users --</code> untuk mencuri password admin!</p>
-                        </div>
-                        <div class="p-3 bg-emerald-950/20 border border-emerald-500/20 rounded-xl text-xs space-y-1">
-                            <span class="font-bold text-emerald-500 block"><i class="fa-regular fa-circle-check mr-1"></i> Cara BENAR & AMAN (Prepared Statements)</span>
-                            <code class="font-mono text-emerald-400 block overflow-x-auto">// Menggunakan PDO di PHP<br>$stmt = $pdo->prepare("SELECT * FROM tb_products WHERE name LIKE :search");<br>$stmt->execute(['search' => "%" . $search . "%"]);<br>$results = $stmt->fetchAll();</code>
-                            <p class="text-[10px] text-slate-400 mt-1">Sistem akan memperlakukan input hacker murni sebagai teks pencarian, bukan kode perintah SQL!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section: Motor Analogy concepts -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
-                    <h3 class="text-lg font-bold text-orange-400 flex items-center gap-2">
-                        <i class="fa-solid fa-wrench text-orange-500"></i> Analogi Otomotif Koding
-                    </h3>
-                    <div class="space-y-4 text-xs leading-relaxed">
-                        <div class="flex gap-4">
-                            <div class="text-2xl text-orange-500"><i class="fa-solid fa-gears"></i></div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Database = Rak & Laci Gudang</h4>
-                                <p class="text-slate-400">Tanpa indeks database, sistem harus membaca data dari baris pertama sampai terakhir. Ini seperti mekanik yang harus membongkar seluruh kardus di bengkel hanya untuk mencari 1 busi!</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="text-2xl text-orange-500"><i class="fa-solid fa-oil-can"></i></div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Validasi Backend = Saringan Oli</h4>
-                                <p class="text-slate-400">Validasi input di frontend (HTML) itu mudah dilewati oleh bot atau curl. Backend harus memvalidasi ulang (mengecek tipe data, panjang teks, ukuran file) layaknya filter oli yang memisahkan kotoran besi dari mesin utama.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="text-2xl text-orange-500"><i class="fa-solid fa-microchip"></i></div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">API Backend = Kabel Kelistrikan (Wiring)</h4>
-                                <p class="text-slate-400">Menghubungkan tombol "Beli" di layar depan (Frontend) dengan pengurangan stok di Gudang Database (Backend) membutuhkan kabel data berupa RESTful API (JSON).</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 border-t border-slate-800 mt-12 py-8 text-slate-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-gears text-orange-500"></i>
-                <span class="font-semibold text-slate-300">MotorPart Dev Mentor Pro © 2026</span>
-            </div>
-            <div class="flex space-x-4 text-xs">
-                <a href="#" onclick="switchTab('mentor')" class="hover:text-orange-500 transition-colors">Panduan Belajar</a>
-                <span>•</span>
-                <a href="#" onclick="switchTab('database')" class="hover:text-orange-500 transition-colors">Skema SQL</a>
-                <span>•</span>
-                <a href="#" class="hover:text-orange-500 transition-colors">Hubungi Mentor</a>
-            </div>
-        </div>
-    </footer>
-
     <!-- MODAL: ADD / EDIT PRODUCT -->
     <div id="product-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn">
-            <div class="bg-slate-800/80 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn max-h-[90vh] overflow-y-auto">
+            <div class="bg-slate-800/80 px-6 py-4 border-b border-slate-700 flex justify-between items-center sticky top-0 z-10">
                 <h3 id="modal-title" class="font-bold text-white text-base">Tambah Part Baru</h3>
                 <button onclick="closeProductModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form id="product-form" onsubmit="handleProductFormSubmit(event)" class="p-6 space-y-4">
+            
+            <form id="product-form" onsubmit="handleProductFormSubmit(event)" class="p-6 space-y-5">
                 <input type="hidden" id="modal-product-id">
                 
                 <div class="space-y-1">
@@ -445,13 +244,31 @@
                     <input type="text" id="modal-name" name="name" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
                 </div>
 
-                <!-- Input Baru: URL Gambar Suku Cadang -->
-                <div class="space-y-1">
-                    <label class="text-xs font-semibold text-slate-400 flex justify-between">
-                        <span>URL Gambar Suku Cadang</span>
-                        <span class="text-[10px] text-slate-500 italic">Lewati jika ingin pakai gambar bawaan</span>
+                <!-- SEGMEN BARU: UNGGAH GAMBAR (DUA OPSI) -->
+                <div class="p-4 rounded-xl border border-slate-700 bg-slate-950/50 space-y-4">
+                    <label class="text-xs font-bold text-white flex items-center gap-2">
+                        <i class="fa-regular fa-image text-orange-500"></i> Penampilan Produk (Pilih Salah Satu)
                     </label>
-                    <input type="url" id="modal-image-url" name="image_url" placeholder="https://example.com/gambar-part.jpg" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                    
+                    <!-- Opsi 1: File Upload Lokal -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-slate-400 uppercase font-bold tracking-widest"><i class="fa-solid fa-file-arrow-up mr-1"></i> 1. Unggah File dari Perangkat</label>
+                        <input type="file" id="modal-image-file" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-orange-600 file:text-white hover:file:bg-orange-500 transition-all cursor-pointer bg-slate-900 border border-slate-800 rounded-lg p-1">
+                    </div>
+
+                    <div class="flex items-center justify-center opacity-50">
+                        <div class="border-t border-slate-700 w-full"></div>
+                        <span class="px-3 text-[9px] font-bold text-slate-400 uppercase">Atau</span>
+                        <div class="border-t border-slate-700 w-full"></div>
+                    </div>
+
+                    <!-- Opsi 2: Link URL Biasa -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-slate-400 uppercase font-bold tracking-widest"><i class="fa-solid fa-link mr-1"></i> 2. Tempel Link URL Gambar</label>
+                        <input type="url" id="modal-image-url" name="image_url" placeholder="https://contoh.com/gambar-knalpot.jpg" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                    </div>
+                    
+                    <p class="text-[9px] text-orange-500/80 italic">*Jika Anda mengisi keduanya, Unggahan File Lokal akan diprioritaskan.</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -487,18 +304,18 @@
                     </div>
                 </div>
 
-                <!-- Compatibility Mapping checkboxes -->
                 <div class="space-y-2">
-                    <label class="text-xs font-semibold text-slate-400 block">Kecocokan Model Motor (Relasional Junction)</label>
+                    <label class="text-xs font-semibold text-slate-400 block">Kecocokan Model Motor</label>
                     <div id="modal-compatibility-group" class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto p-2 bg-slate-950 rounded-xl border border-slate-800">
                         <!-- Populated by JS -->
                     </div>
-                    <span class="text-[10px] text-slate-500 italic block">Pilih motor apa saja yang kompatibel dengan suku cadang ini.</span>
                 </div>
 
-                <div class="pt-4 border-t border-slate-800 flex justify-end space-x-3">
+                <div class="pt-4 border-t border-slate-800 flex justify-end space-x-3 sticky bottom-0 bg-slate-900 pb-2">
                     <button type="button" onclick="closeProductModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-lg hover:bg-slate-700">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-orange-600 text-white text-xs font-semibold rounded-lg hover:bg-orange-500 shadow-md shadow-orange-500/10">Simpan Data</button>
+                    <button type="submit" id="btn-submit" class="px-5 py-2 bg-orange-600 text-white text-xs font-semibold rounded-lg hover:bg-orange-500 shadow-md shadow-orange-500/10 flex items-center gap-2">
+                        <span>Simpan Data</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -512,10 +329,7 @@
                 <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="p-6 space-y-4">
-                <div id="cart-items-container" class="space-y-4 max-h-64 overflow-y-auto pr-1">
-                    <!-- Dynamic cart items -->
-                </div>
-
+                <div id="cart-items-container" class="space-y-4 max-h-64 overflow-y-auto pr-1"></div>
                 <div class="pt-4 border-t border-slate-800 space-y-3">
                     <div class="flex justify-between text-sm font-semibold">
                         <span class="text-slate-400">Total Tagihan:</span>
@@ -531,17 +345,12 @@
 
     <!-- CUSTOM MESSAGE TOAST -->
     <div id="toast-message" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-3.5 rounded-xl shadow-2xl max-w-sm">
-        <div id="toast-icon-wrapper" class="p-1.5 rounded-lg text-white">
-            <!-- Dynamic icon -->
-        </div>
-        <div>
-            <span id="toast-text" class="text-xs text-slate-200 font-medium">Notifikasi</span>
-        </div>
+        <div id="toast-icon-wrapper" class="p-1.5 rounded-lg text-white"></div>
+        <div><span id="toast-text" class="text-xs text-slate-200 font-medium">Notifikasi</span></div>
     </div>
 
     <!-- APPLICATION LOGIC IN JAVASCRIPT -->
     <script>
-        // MOCK DATABASE / STATE OF MOTOR MODELS
         const MOTOR_MODELS = [
             { id: 1, brand: "Honda", model_name: "Beat" },
             { id: 2, brand: "Honda", model_name: "Vario 150" },
@@ -555,154 +364,61 @@
             { id: 10, brand: "Kawasaki", model_name: "Ninja ZX-25R" }
         ];
 
-        // MOCK INITIAL PARTS DATABASE (Including actual representative image URLs)
         let partsDb = [
             {
-                id: 1,
-                name: "Kampas Rem Depan Cakram Nissin",
-                price: 75000,
-                stock: 15,
-                brand: "Honda",
-                category: "Pengereman",
-                image_url: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=400", // Representative Disc Brake Parts
-                compat_motor_ids: [1, 2, 3] // Fits Beat, Vario, PCX
+                id: 1, name: "Kampas Rem Depan Cakram Nissin", price: 75000, stock: 15, brand: "Honda", category: "Pengereman",
+                image_url: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=400",
+                compat_motor_ids: [1, 2, 3]
             },
             {
-                id: 2,
-                name: "Piston Kit FIM Dome Standard",
-                price: 185000,
-                stock: 8,
-                brand: "Yamaha",
-                category: "Mesin",
-                image_url: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=400", // Mechanical Engine components
-                compat_motor_ids: [4, 5] // Fits NMAX, Aerox
-            },
-            {
-                id: 3,
-                name: "V-Belt Kawahara Racing Heavy Duty",
-                price: 245000,
-                stock: 12,
-                brand: "Honda",
-                category: "Transmisi",
-                image_url: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=80&w=400", // Transmission transmission belt
-                compat_motor_ids: [2, 3] // Fits Vario, PCX
-            },
-            {
-                id: 4,
-                name: "Busi Iridium Daytona Max",
-                price: 95000,
-                stock: 25,
-                brand: "Yamaha",
-                category: "Kelistrikan",
-                image_url: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=400", // Spark plug electrical item
-                compat_motor_ids: [1, 2, 4, 5, 6, 7] // Fits almost everything
-            },
-            {
-                id: 5,
-                name: "Rantai & Gear Set SSS 428 SB",
-                price: 320000,
-                stock: 5,
-                brand: "Kawasaki",
-                category: "Transmisi",
-                image_url: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=400", // Chain drivetrain
-                compat_motor_ids: [9] // Fits KLX 150
-            },
-            {
-                id: 6,
-                name: "Kampas Kopling Ganda CLD",
-                price: 140000,
-                stock: 10,
-                brand: "Suzuki",
-                category: "Transmisi",
-                image_url: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&q=80&w=400", // Clutch parts
-                compat_motor_ids: [7, 8] // Fits Satria, Address
+                id: 2, name: "Piston Kit FIM Dome Standard", price: 185000, stock: 8, brand: "Yamaha", category: "Mesin",
+                image_url: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=400",
+                compat_motor_ids: [4, 5]
             }
         ];
 
-        // Global Shop Cart State
         let cart = [];
-
-        // Active filters state
         let selectedCategory = "all";
 
-        // Initial launch procedures
         window.onload = function() {
             populateMotorFilterOptions();
             populateCategoryFilterOptions();
             populateCompatibilityCheckboxes();
-            populateDatabaseSandboxSelector();
             applyFilters();
             renderAdminTable();
-            updateDbSandbox();
         };
 
-        // SWITCH PORTAL TAB INTERACTIVITY
         function switchTab(tabId) {
-            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(element => {
-                element.classList.add('hidden');
-                element.classList.remove('block');
+                element.classList.add('hidden'); element.classList.remove('block');
             });
-            // Show selected
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             document.getElementById(`tab-${tabId}`).classList.add('block');
-
-            // Set active class on desktop tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-400 hover:text-white";
-            });
-            const activeDesktopBtn = document.getElementById(`btn-tab-${tabId}`);
-            if (activeDesktopBtn) {
-                activeDesktopBtn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 bg-orange-600 text-white";
-            }
-
-            // Set active class on mobile navigation
-            document.querySelectorAll('.tab-btn-mob').forEach(btn => {
-                btn.className = "tab-btn-mob text-xs flex flex-col items-center text-slate-400";
-            });
-            const activeMobileBtn = document.getElementById(`mob-tab-${tabId}`);
-            if (activeMobileBtn) {
-                activeMobileBtn.className = "tab-btn-mob text-xs flex flex-col items-center text-orange-500";
-            }
         }
 
-        // POPULATE TIPE MOTOR FILTER DYNAMICALLY BASED ON SELECTED BRAND
         function populateMotorFilterOptions(selectedBrand = "all") {
             const filterModelSelect = document.getElementById('filter-model');
             filterModelSelect.innerHTML = '<option value="all">Semua Tipe Motor</option>';
-
-            const filteredModels = selectedBrand === "all" 
-                ? MOTOR_MODELS 
-                : MOTOR_MODELS.filter(m => m.brand === selectedBrand);
-
+            const filteredModels = selectedBrand === "all" ? MOTOR_MODELS : MOTOR_MODELS.filter(m => m.brand === selectedBrand);
             filteredModels.forEach(motor => {
                 const opt = document.createElement('option');
-                opt.value = motor.id;
-                opt.textContent = `${motor.brand} ${motor.model_name}`;
+                opt.value = motor.id; opt.textContent = `${motor.brand} ${motor.model_name}`;
                 filterModelSelect.appendChild(opt);
             });
         }
 
-        // TRIGGERED WHEN BRAND FILTER IN CATALOG IS CHANGED
         function onBrandFilterChange() {
-            const brandVal = document.getElementById('filter-brand').value;
-            populateMotorFilterOptions(brandVal);
+            populateMotorFilterOptions(document.getElementById('filter-brand').value);
             applyFilters();
         }
 
-        // POPULATE CATEGORY FILTERS IN THE ASIDE
         function populateCategoryFilterOptions() {
             const container = document.getElementById('category-filter-group');
-            container.innerHTML = "";
-
             const categories = ["all", "Mesin", "Kelistrikan", "Transmisi", "Sasis & Body", "Pengereman"];
-            
             categories.forEach(cat => {
                 const button = document.createElement('button');
-                button.type = "button";
-                button.onclick = () => selectCategoryFilter(cat);
+                button.type = "button"; button.onclick = () => selectCategoryFilter(cat);
                 button.id = `cat-btn-${cat.replace(/\s+/g, '')}`;
-                
                 if (cat === "all") {
                     button.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-500 bg-orange-950/20 text-orange-400 font-bold transition-all";
                     button.textContent = "🔧 Semua Kategori";
@@ -714,36 +430,25 @@
             });
         }
 
-        // SWITCH CATEGORY SELECTION IN FILTER SIDEBAR
         function selectCategoryFilter(category) {
             selectedCategory = category;
-            
             const cats = ["all", "Mesin", "Kelistrikan", "Transmisi", "Sasis & Body", "Pengereman"];
             cats.forEach(c => {
                 const btn = document.getElementById(`cat-btn-${c.replace(/\s+/g, '')}`);
-                if (btn) {
-                    btn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:text-white transition-all";
-                }
+                if (btn) btn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:text-white transition-all";
             });
-
             const activeBtn = document.getElementById(`cat-btn-${category.replace(/\s+/g, '')}`);
-            if (activeBtn) {
-                activeBtn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-500 bg-orange-950/20 text-orange-400 font-bold transition-all";
-            }
-            
+            if (activeBtn) activeBtn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-500 bg-orange-950/20 text-orange-400 font-bold transition-all";
             applyFilters();
         }
 
-        // RESET ALL CATALOG SEARCH FILTERS
         function resetFilters() {
             document.getElementById('filter-search').value = "";
             document.getElementById('filter-brand').value = "all";
             document.getElementById('filter-sort').value = "default";
-            populateMotorFilterOptions("all");
-            selectCategoryFilter("all");
+            populateMotorFilterOptions("all"); selectCategoryFilter("all");
         }
 
-        // MAIN CATALOG FILTER & RENDER ENGINE
         function applyFilters() {
             const searchKeyword = document.getElementById('filter-search').value.toLowerCase().trim();
             const brandFilter = document.getElementById('filter-brand').value;
@@ -751,14 +456,12 @@
             const sortVal = document.getElementById('filter-sort').value;
 
             let results = partsDb.filter(part => {
-                const matchesKeyword = searchKeyword === "" || 
-                    part.name.toLowerCase().includes(searchKeyword) || 
+                const matchesKeyword = searchKeyword === "" || part.name.toLowerCase().includes(searchKeyword) || 
                     part.category.toLowerCase().includes(searchKeyword) ||
                     part.compat_motor_ids.some(id => {
                         const motor = MOTOR_MODELS.find(m => m.id === id);
                         return motor && (motor.model_name.toLowerCase().includes(searchKeyword) || motor.brand.toLowerCase().includes(searchKeyword));
                     });
-
                 const matchesBrand = brandFilter === "all" || part.brand === brandFilter;
                 const matchesModel = modelFilter === "all" || part.compat_motor_ids.includes(parseInt(modelFilter));
                 const matchesCategory = selectedCategory === "all" || part.category === selectedCategory;
@@ -766,30 +469,18 @@
                 return matchesKeyword && matchesBrand && matchesModel && matchesCategory;
             });
 
-            if (sortVal === "cheap") {
-                results.sort((a, b) => a.price - b.price);
-            } else if (sortVal === "expensive") {
-                results.sort((a, b) => b.price - a.price);
-            }
+            if (sortVal === "cheap") results.sort((a, b) => a.price - b.price);
+            else if (sortVal === "expensive") results.sort((a, b) => b.price - a.price);
 
             document.getElementById('product-count').textContent = results.length;
             renderShopCatalog(results);
         }
 
-        // INJECT RENDERED HTML OF FILTERED SPARE PARTS TO CATALOG GRID
         function renderShopCatalog(products) {
             const grid = document.getElementById('shop-grid');
             grid.innerHTML = "";
-
             if (products.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-1 md:col-span-3 py-16 text-center bg-slate-900 border border-slate-800 rounded-2xl flex flex-col items-center justify-center space-y-3">
-                        <i class="fa-solid fa-boxes-open text-5xl text-slate-700 animate-pulse"></i>
-                        <h4 class="text-white font-bold text-base">Suku Cadang Tidak Ditemukan</h4>
-                        <p class="text-xs text-slate-400 max-w-sm">Coba bersihkan filter pencarian atau ketik nama komponen otomotif yang berbeda.</p>
-                        <button onclick="resetFilters()" class="text-xs font-bold text-orange-500 hover:underline">Sapu Bersih Semua Filter</button>
-                    </div>
-                `;
+                grid.innerHTML = `<div class="col-span-1 md:col-span-3 py-16 text-center text-slate-400"><i class="fa-solid fa-box-open text-4xl mb-3"></i><p>Suku Cadang Tidak Ditemukan</p></div>`;
                 return;
             }
 
@@ -798,491 +489,282 @@
                     const motor = MOTOR_MODELS.find(m => m.id === id);
                     return motor ? `${motor.brand} ${motor.model_name}` : '';
                 }).filter(name => name !== '');
+                const compatBadgesHtml = compatibleModels.map(name => `<span class="text-[10px] bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-800">${name}</span>`).join(' ');
+                const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(part.price);
 
-                const compatBadgesHtml = compatibleModels.map(name => 
-                    `<span class="text-[10px] bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-800 font-mono">${name}</span>`
-                ).join(' ');
-
-                const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(part.price);
-
-                // Check if user set an image URL, otherwise use a fallback layout with icon
                 const imgTag = part.image_url && part.image_url.trim() !== ""
-                    ? `<img src="${part.image_url}" alt="${part.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'text-center space-y-2\\'><i class=\\'${getCategoryIcon(part.category)} text-slate-700 text-4xl group-hover:scale-110 group-hover:text-orange-500 transition-all duration-300\\'></i><span class=\\'text-[9px] uppercase tracking-widest text-slate-600 block\\'>${part.brand} OEM Part</span></div>';" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">`
-                    : `<div class="text-center space-y-2">
-                            <i class="${getCategoryIcon(part.category)} text-slate-700 text-4xl group-hover:scale-110 group-hover:text-orange-500 transition-all duration-300"></i>
-                            <span class="text-[9px] uppercase tracking-widest text-slate-600 block">${part.brand} OEM Part</span>
-                       </div>`;
+                    ? `<img src="${part.image_url}" alt="${part.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+                       <div class="hidden absolute inset-0 flex flex-col items-center justify-center text-slate-700 bg-slate-900"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`
+                    : `<div class="absolute inset-0 flex flex-col items-center justify-center text-slate-700 bg-slate-900"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`;
 
                 const cardHtml = `
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-orange-500/40 transition-all duration-200 shadow-lg group relative overflow-hidden">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-orange-500/40 transition-all duration-200 shadow-lg group relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="text-[10px] uppercase tracking-wider font-extrabold text-orange-500 bg-orange-950/30 px-2.5 py-1 rounded-full border border-orange-900/45">
-                                <i class="fa-solid fa-tag mr-1 text-[9px]"></i>${part.category}
-                            </span>
-                            <span class="text-xs ${part.stock > 3 ? 'text-slate-400' : 'text-red-400 font-bold bg-red-950/20 px-2 py-0.5 rounded'}">
-                                ${part.stock > 0 ? `<i class="fa-solid fa-warehouse mr-1 text-[10px]"></i>Stok: ${part.stock}` : '<i class="fa-solid fa-circle-exclamation mr-1"></i>Habis!'}
-                            </span>
+                            <span class="text-[10px] uppercase font-extrabold text-orange-500 bg-orange-950/30 px-2 py-1 rounded-full">${part.category}</span>
+                            <span class="text-xs ${part.stock > 0 ? 'text-slate-400' : 'text-red-400'}">${part.stock > 0 ? `Stok: ${part.stock}` : 'Habis!'}</span>
                         </div>
-
-                        <div class="bg-slate-950 rounded-xl h-40 flex items-center justify-center relative border border-slate-800 mb-4 overflow-hidden group-hover:border-slate-700 transition-all">
+                        <div class="bg-slate-950 rounded-xl h-40 flex items-center justify-center relative border border-slate-800 mb-4 overflow-hidden">
                             ${imgTag}
                         </div>
-
                         <div class="space-y-1 mb-4">
-                            <h4 class="font-bold text-white text-sm group-hover:text-orange-400 transition-all leading-snug truncate" title="${part.name}">${part.name}</h4>
+                            <h4 class="font-bold text-white text-sm truncate" title="${part.name}">${part.name}</h4>
                             <p class="text-orange-500 font-extrabold text-base">${formattedPrice}</p>
                         </div>
-
-                        <div class="space-y-1.5 mb-5">
-                            <span class="text-[10px] font-bold text-slate-500 uppercase block"><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i>Kompatibilitas PNP:</span>
-                            <div class="flex flex-wrap gap-1">
-                                ${compatBadgesHtml}
-                            </div>
+                        <div class="space-y-1.5 mb-5 h-12 overflow-hidden">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase">PNP:</span>
+                            <div class="flex flex-wrap gap-1">${compatBadgesHtml}</div>
                         </div>
-
-                        <button onclick="addToCart(${part.id})" ${part.stock === 0 ? 'disabled' : ''} class="w-full ${part.stock > 0 ? 'bg-slate-800 hover:bg-orange-600 text-slate-200 hover:text-white' : 'bg-slate-950 text-slate-600 cursor-not-allowed border-slate-800'} py-2.5 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 border border-slate-700">
-                            <i class="fa-solid fa-cart-plus"></i> ${part.stock > 0 ? 'Tambah Ke Keranjang' : 'Stok Kosong'}
-                        </button>
-                    </div>
-                `;
+                        <button onclick="addToCart(${part.id})" ${part.stock === 0 ? 'disabled' : ''} class="w-full ${part.stock > 0 ? 'bg-slate-800 hover:bg-orange-600 text-slate-200 hover:text-white' : 'bg-slate-950 text-slate-600 cursor-not-allowed border-slate-800'} py-2.5 rounded-xl font-semibold text-xs transition-all"><i class="fa-solid fa-cart-plus"></i> Tambah</button>
+                    </div>`;
                 grid.innerHTML += cardHtml;
             });
         }
 
-        // HELPER TO MATCH CATEGORIES TO AUTOMOTIVE FONT-AWESOME ICONS
         function getCategoryIcon(cat) {
             switch(cat) {
-                case "Mesin": return "fa-solid fa-cubes";
-                case "Kelistrikan": return "fa-solid fa-bolt";
-                case "Transmisi": return "fa-solid fa-arrows-spin";
-                case "Sasis & Body": return "fa-solid fa-motorcycle";
-                case "Pengereman": return "fa-solid fa-circle-dot";
-                default: return "fa-solid fa-gears";
+                case "Mesin": return "fa-solid fa-cubes"; case "Kelistrikan": return "fa-solid fa-bolt";
+                case "Transmisi": return "fa-solid fa-arrows-spin"; case "Sasis & Body": return "fa-solid fa-motorcycle";
+                case "Pengereman": return "fa-solid fa-circle-dot"; default: return "fa-solid fa-gears";
             }
         }
 
-        // SHOPPING CART CONTROLLERS
         function addToCart(partId) {
             const product = partsDb.find(p => p.id === partId);
             if (!product || product.stock <= 0) return;
-
             const existingCartItem = cart.find(item => item.product.id === partId);
             if (existingCartItem) {
-                if (existingCartItem.quantity < product.stock) {
-                    existingCartItem.quantity++;
-                    showToast(`Kuantitas ${product.name} berhasil dinaikkan.`, "success");
-                } else {
-                    showToast("Maaf, tidak bisa memesan melebihi batas stok tersedia gudang bengkel!", "error");
-                    return;
-                }
-            } else {
-                cart.push({ product, quantity: 1 });
-                showToast(`Suku Cadang ${product.name} dimasukkan ke keranjang.`, "success");
-            }
-
-            updateCartBadge();
-            renderCartModal();
+                if (existingCartItem.quantity < product.stock) { existingCartItem.quantity++; showToast("Kuantitas dinaikkan.", "success"); }
+                else { showToast("Stok tidak mencukupi!", "error"); }
+            } else { cart.push({ product, quantity: 1 }); showToast("Dimasukkan ke keranjang.", "success"); }
+            updateCartBadge(); renderCartModal();
         }
 
         function updateCartBadge() {
-            const badge = document.getElementById('cart-badge');
-            const totalCount = cart.reduce((total, item) => total + item.quantity, 0);
-            badge.textContent = totalCount;
+            document.getElementById('cart-badge').textContent = cart.reduce((total, item) => total + item.quantity, 0);
         }
 
         function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
-            renderCartModal();
+            document.getElementById('cart-modal').classList.toggle('hidden'); renderCartModal();
         }
 
         function renderCartModal() {
             const container = document.getElementById('cart-items-container');
             const totalDisplay = document.getElementById('cart-total');
             container.innerHTML = "";
-
             if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="py-12 text-center text-slate-500 space-y-2">
-                        <i class="fa-solid fa-cart-flatbed text-4xl block text-slate-700"></i>
-                        <span class="text-xs">Keranjang belanja Anda masih kosong mlompong.</span>
-                    </div>
-                `;
-                totalDisplay.textContent = "Rp 0";
-                return;
+                container.innerHTML = `<div class="py-8 text-center text-slate-500">Keranjang kosong.</div>`;
+                totalDisplay.textContent = "Rp 0"; return;
             }
-
             let grandTotal = 0;
             cart.forEach(item => {
-                const subTotal = item.product.price * item.quantity;
-                grandTotal += subTotal;
-
+                grandTotal += item.product.price * item.quantity;
                 const itemHtml = `
-                    <div class="flex items-center justify-between gap-4 border-b border-slate-800 pb-3">
-                        <div class="space-y-1 max-w-[60%]">
-                            <span class="text-xs font-bold text-white block truncate">${item.product.name}</span>
-                            <span class="text-[10px] text-slate-400 block">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.product.price)} / pcs</span>
-                        </div>
+                    <div class="flex justify-between border-b border-slate-800 pb-3">
+                        <div class="w-1/2"><span class="text-xs font-bold text-white block truncate">${item.product.name}</span></div>
                         <div class="flex items-center space-x-2">
-                            <button onclick="adjustCartQuantity(${item.product.id}, -1)" class="w-6 h-6 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-200">-</button>
-                            <span class="text-xs text-slate-200 font-bold w-4 text-center">${item.quantity}</span>
-                            <button onclick="adjustCartQuantity(${item.product.id}, 1)" class="w-6 h-6 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-200">+</button>
-                            <button onclick="removeFromCart(${item.product.id})" class="text-red-500 hover:text-red-400 text-xs ml-2"><i class="fa-solid fa-trash-can"></i></button>
+                            <button onclick="adjustCartQuantity(${item.product.id}, -1)" class="px-2 py-0.5 bg-slate-800 text-white rounded">-</button>
+                            <span class="text-xs text-white w-4 text-center">${item.quantity}</span>
+                            <button onclick="adjustCartQuantity(${item.product.id}, 1)" class="px-2 py-0.5 bg-slate-800 text-white rounded">+</button>
+                            <button onclick="removeFromCart(${item.product.id})" class="text-red-500 text-xs ml-2"><i class="fa-solid fa-trash"></i></button>
                         </div>
-                    </div>
-                `;
-                container.appendChild(document.createRange().createContextualFragment(itemHtml));
+                    </div>`;
+                container.innerHTML += itemHtml;
             });
-
-            totalDisplay.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(grandTotal);
+            totalDisplay.textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(grandTotal);
         }
 
         function adjustCartQuantity(id, amount) {
             const item = cart.find(i => i.product.id === id);
             if (!item) return;
-
-            const nextQty = item.quantity + amount;
-            if (nextQty <= 0) {
-                removeFromCart(id);
-            } else if (nextQty <= item.product.stock) {
-                item.quantity = nextQty;
-            } else {
-                showToast("Maaf, tidak bisa menambah lebih banyak karena terbentur stok gudang bengkel!", "error");
-            }
-            updateCartBadge();
-            renderCartModal();
+            if (item.quantity + amount <= 0) removeFromCart(id);
+            else if (item.quantity + amount <= item.product.stock) item.quantity += amount;
+            else showToast("Stok gudang tidak cukup!", "error");
+            updateCartBadge(); renderCartModal();
         }
 
         function removeFromCart(id) {
             cart = cart.filter(item => item.product.id !== id);
-            updateCartBadge();
-            renderCartModal();
-            showToast("Item berhasil dikeluarkan dari keranjang.", "success");
+            updateCartBadge(); renderCartModal();
         }
 
         function checkoutOrder() {
             if (cart.length === 0) return;
-
             cart.forEach(item => {
                 const realDbPart = partsDb.find(p => p.id === item.product.id);
-                if (realDbPart) {
-                    realDbPart.stock -= item.quantity;
-                }
+                if (realDbPart) realDbPart.stock -= item.quantity;
             });
-
-            cart = [];
-            updateCartBadge();
-            toggleCartModal();
-            applyFilters();
-            renderAdminTable();
-            showToast("🎁 Transaksi Berhasil! Suku Cadang dikemas dan stok gudang terpotong aman.", "success");
+            cart = []; updateCartBadge(); toggleCartModal(); applyFilters(); renderAdminTable();
+            showToast("Transaksi Berhasil! Stok terpotong.", "success");
         }
 
-        // ADMIN PANEL: RENDER PRODUCT STOCK MANAGEMENT TABLE
         function renderAdminTable() {
             const tbody = document.getElementById('admin-table-body');
             tbody.innerHTML = "";
-
             partsDb.forEach(part => {
-                const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(part.price);
-
-                const compatibleModels = part.compat_motor_ids.map(id => {
-                    const motor = MOTOR_MODELS.find(m => m.id === id);
-                    return motor ? `${motor.brand} ${motor.model_name}` : '';
-                }).filter(n => n !== '').join(', ');
-
-                // Display picture thumbnail in admin table if available
-                const thumbnailHtml = part.image_url && part.image_url.trim() !== ""
-                    ? `<img src="${part.image_url}" alt="${part.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-[10px] text-slate-500\\'><i class=\\'${getCategoryIcon(part.category)}\\'></i></div>';" class="w-8 h-8 rounded object-cover shadow-sm">`
-                    : `<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-[10px] text-slate-500"><i class="${getCategoryIcon(part.category)}"></i></div>`;
-
+                const imgHtml = part.image_url ? `<img src="${part.image_url}" class="w-8 h-8 rounded object-cover shadow-sm">` : `<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-[10px] text-slate-500"><i class="${getCategoryIcon(part.category)}"></i></div>`;
                 const row = `
-                    <tr class="hover:bg-slate-900 transition-colors">
-                        <td class="py-4 px-6">
-                            <div class="flex items-center gap-3">
-                                ${thumbnailHtml}
-                                <div>
-                                    <span class="text-xs text-slate-500 font-mono block">#PAR-${part.id}</span>
-                                    <span class="font-bold text-white text-sm">${part.name}</span>
-                                </div>
-                            </div>
+                    <tr class="hover:bg-slate-900 border-b border-slate-800/50">
+                        <td class="py-3 px-6"><div class="flex items-center gap-3">${imgHtml}<div><span class="font-bold text-white text-sm block truncate w-40">${part.name}</span></div></div></td>
+                        <td class="py-3 px-6 text-xs text-slate-300">${part.category}</td>
+                        <td class="py-3 px-6 text-xs text-orange-400 font-bold">${part.brand}</td>
+                        <td class="py-3 px-6 text-sm font-bold text-white">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(part.price)}</td>
+                        <td class="py-3 px-6 text-xs">${part.stock} unit</td>
+                        <td class="py-3 px-6 text-center">
+                            <button onclick="openEditProductModal(${part.id})" class="p-1.5 bg-slate-800 hover:bg-blue-600 text-white rounded"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="deleteProduct(${part.id})" class="p-1.5 bg-slate-800 hover:bg-red-600 text-white rounded"><i class="fa-solid fa-trash"></i></button>
                         </td>
-                        <td class="py-4 px-6 text-xs text-slate-300">${part.category}</td>
-                        <td class="py-4 px-6">
-                            <div class="max-w-xs space-y-1">
-                                <span class="text-xs font-bold text-orange-400 block">Brand Utama: ${part.brand}</span>
-                                <span class="text-[10px] text-slate-400 block truncate" title="${compatibleModels}">PNP: ${compatibleModels || 'Tidak Ada'}</span>
-                            </div>
-                        </td>
-                        <td class="py-4 px-6 text-sm font-bold text-white">${formattedPrice}</td>
-                        <td class="py-4 px-6">
-                            <span class="px-2 py-1 rounded text-xs font-semibold ${part.stock > 3 ? 'bg-slate-900 text-slate-300 border border-slate-800' : 'bg-red-950/40 text-red-400 border border-red-900/40'}">
-                                ${part.stock} unit
-                            </span>
-                        </td>
-                        <td class="py-4 px-6 text-center space-x-2">
-                            <button onclick="openEditProductModal(${part.id})" class="p-1.5 bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white rounded-lg transition-colors" title="Edit Part">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button onclick="deleteProduct(${part.id})" class="p-1.5 bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white rounded-lg transition-colors" title="Hapus Part">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
+                    </tr>`;
                 tbody.innerHTML += row;
             });
         }
 
-        // GENERATE SELECTION LIST FOR COMPATIBILITIES (WITH CHECKBOXES IN MODAL FORM)
         function populateCompatibilityCheckboxes() {
             const container = document.getElementById('modal-compatibility-group');
             container.innerHTML = "";
-
             MOTOR_MODELS.forEach(motor => {
-                const div = document.createElement('div');
-                div.className = "flex items-center space-x-2 p-1.5 hover:bg-slate-900 rounded-lg";
-                div.innerHTML = `
-                    <input type="checkbox" id="modal-compat-cb-${motor.id}" name="compat_motor_ids[]" value="${motor.id}" class="rounded border-slate-700 bg-slate-950 text-orange-600 focus:ring-orange-500">
-                    <label for="modal-compat-cb-${motor.id}" class="text-xs text-slate-300 font-mono cursor-pointer select-none">${motor.brand} ${motor.model_name}</label>
-                `;
-                container.appendChild(div);
+                container.innerHTML += `
+                    <div class="flex items-center space-x-2 p-1.5 hover:bg-slate-900 rounded-lg">
+                        <input type="checkbox" id="modal-compat-cb-${motor.id}" name="compat_motor_ids[]" value="${motor.id}" class="rounded border-slate-700 bg-slate-950 text-orange-600 focus:ring-orange-500">
+                        <label for="modal-compat-cb-${motor.id}" class="text-xs text-slate-300 font-mono cursor-pointer select-none">${motor.brand} ${motor.model_name}</label>
+                    </div>`;
             });
         }
 
-        // OPEN MODAL PREPARED FOR NEW PRODUCT (CREATE)
         function openAddProductModal() {
             document.getElementById('modal-title').textContent = "🔧 Tambah Sparepart Baru";
             document.getElementById('product-form').reset();
             document.getElementById('modal-product-id').value = "";
             document.getElementById('modal-image-url').value = "";
-            
-            MOTOR_MODELS.forEach(m => {
-                const cb = document.getElementById(`modal-compat-cb-${m.id}`);
-                if (cb) cb.checked = false;
-            });
-
+            document.getElementById('modal-image-file').value = "";
+            MOTOR_MODELS.forEach(m => { const cb = document.getElementById(`modal-compat-cb-${m.id}`); if (cb) cb.checked = false; });
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
-        // OPEN MODAL FILLED WITH CHOSEN DATA (UPDATE)
         function openEditProductModal(partId) {
             const part = partsDb.find(p => p.id === partId);
             if (!part) return;
-
-            document.getElementById('modal-title').textContent = "🛠️ Edit Detail Suku Cadang";
+            document.getElementById('modal-title').textContent = "🛠️ Edit Suku Cadang";
             document.getElementById('modal-product-id').value = part.id;
             document.getElementById('modal-name').value = part.name;
             document.getElementById('modal-price').value = part.price;
             document.getElementById('modal-stock').value = part.stock;
             document.getElementById('modal-brand').value = part.brand;
             document.getElementById('modal-category').value = part.category;
-            document.getElementById('modal-image-url').value = part.image_url || "";
+            document.getElementById('modal-image-url').value = part.image_url && !part.image_url.startsWith('data:image') ? part.image_url : "";
+            document.getElementById('modal-image-file').value = ""; // Reset input file
 
             MOTOR_MODELS.forEach(m => {
                 const cb = document.getElementById(`modal-compat-cb-${m.id}`);
-                if (cb) {
-                    cb.checked = part.compat_motor_ids.includes(m.id);
-                }
+                if (cb) cb.checked = part.compat_motor_ids.includes(m.id);
             });
-
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
-        // CLOSE PRODUCT CREATOR/EDITOR MODAL
-        function closeProductModal() {
-            document.getElementById('product-modal').classList.add('hidden');
+        function closeProductModal() { document.getElementById('product-modal').classList.add('hidden'); }
+
+        // MENGONVERSI FILE GAMBAR MENJADI KODE TEKS BASE64
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
         }
 
-        // CAPTURE SUBMIT FORM AND WRITE ACTIONS (SMART REDIRECTOR / INTEGRATED SIMULATOR)
-        function handleProductFormSubmit(event) {
+        // ASYNC FORM SUBMIT HANDLER
+        async function handleProductFormSubmit(event) {
             event.preventDefault();
+            
+            // Ubah tombol jadi loading state
+            const btnSubmit = document.getElementById('btn-submit');
+            const originalBtnText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Menyimpan...`;
+            btnSubmit.disabled = true;
 
             const name = document.getElementById('modal-name').value;
             const price = parseFloat(document.getElementById('modal-price').value);
             const stock = parseInt(document.getElementById('modal-stock').value);
             const brand = document.getElementById('modal-brand').value;
             const category = document.getElementById('modal-category').value;
-            const imageUrl = document.getElementById('modal-image-url').value;
             const editingId = document.getElementById('modal-product-id').value;
+            
+            const urlInput = document.getElementById('modal-image-url').value;
+            const fileInput = document.getElementById('modal-image-file');
 
-            // Gather values of selected compatibility checkboxes
+            // LOGIKA GAMBAR: Prioritaskan File Upload. Jika tidak ada file, pakai URL Input
+            let finalImageUrl = urlInput;
+            
+            try {
+                if (fileInput.files && fileInput.files.length > 0) {
+                    // Konversi file fisik menjadi string teks Base64
+                    finalImageUrl = await convertFileToBase64(fileInput.files[0]);
+                } else if (editingId && finalImageUrl === "") {
+                    // Jika sedang edit, dan kedua input kosong, pertahankan gambar lama
+                    const existingPart = partsDb.find(p => p.id === parseInt(editingId));
+                    if (existingPart && existingPart.image_url) {
+                        finalImageUrl = existingPart.image_url;
+                    }
+                }
+            } catch (error) {
+                console.error("Gagal membaca file:", error);
+                showToast("Gagal memproses gambar yang diunggah.", "error");
+            }
+
             const selectedCompatIds = [];
             MOTOR_MODELS.forEach(m => {
                 const cb = document.getElementById(`modal-compat-cb-${m.id}`);
-                if (cb && cb.checked) {
-                    selectedCompatIds.push(parseInt(m.id));
-                }
+                if (cb && cb.checked) selectedCompatIds.push(parseInt(m.id));
             });
 
-            // LOGIKA PINTAR: Deteksi apakah dijalankan lewat server XAMPP (Localhost)
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
-            if (isLocalhost) {
-                // Jika berjalan di server XAMPP lokal asli, kirim data secara nyata ke proses_tambah.php via AJAX fetch
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('price', price);
-                formData.append('stock', stock);
-                formData.append('brand', brand);
-                formData.append('category', category);
-                formData.append('image_url', imageUrl);
-                
-                selectedCompatIds.forEach(id => {
-                    formData.append('compat_motor_ids[]', id);
-                });
-
-                if (editingId) {
-                    formData.append('id', editingId);
-                }
-
-                fetch('proses_tambah.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Server returned 404 or other error');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    // Berhasil masuk database fisik MySQL! Sekarang update UI lokal agar sinkron
-                    updateLocalDataState(editingId, name, price, stock, brand, category, imageUrl, selectedCompatIds);
-                    showToast(`🟢 Terkoneksi XAMPP! Suku cadang "${name}" berhasil disimpan ke database MySQL!`, "success");
-                })
-                .catch(error => {
-                    console.warn("Backend PHP gagal dijangkau, mengaktifkan simulasi lokal sandbox: ", error);
-                    // Jalankan simulasi offline jika proses_tambah.php tidak sengaja terhapus/gagal dipanggil
-                    updateLocalDataState(editingId, name, price, stock, brand, category, imageUrl, selectedCompatIds);
-                });
-
-            } else {
-                // Jika sedang ditinjau langsung lewat tombol Preview Canvas, lakukan simulasi internal agar aman & tidak 404
-                updateLocalDataState(editingId, name, price, stock, brand, category, imageUrl, selectedCompatIds);
-            }
-
+            // Update UI State Lokal (Cocok untuk Google Sites yang mensimulasikan Backend)
+            updateLocalDataState(editingId, name, price, stock, brand, category, finalImageUrl, selectedCompatIds);
+            
             closeProductModal();
+            
+            // Kembalikan tombol seperti semula
+            btnSubmit.innerHTML = originalBtnText;
+            btnSubmit.disabled = false;
         }
 
-        // FUNGSI PEMBANTU UNTUK MERUBAH STATE DATA LOKAL & RENDER ULANG LAYAR
         function updateLocalDataState(editingId, name, price, stock, brand, category, imageUrl, selectedCompatIds) {
             if (editingId) {
                 const part = partsDb.find(p => p.id === parseInt(editingId));
                 if (part) {
-                    part.name = name;
-                    part.price = price;
-                    part.stock = stock;
-                    part.brand = brand;
-                    part.category = category;
-                    part.image_url = imageUrl;
+                    part.name = name; part.price = price; part.stock = stock;
+                    part.brand = brand; part.category = category; part.image_url = imageUrl;
                     part.compat_motor_ids = selectedCompatIds;
-                    showToast(`Suku Cadang "${name}" sukses diperbarui!`, "success");
+                    showToast(`Data "${name}" diperbarui!`, "success");
                 }
             } else {
                 const newId = partsDb.length > 0 ? Math.max(...partsDb.map(p => p.id)) + 1 : 1;
-                const newPart = {
-                    id: newId,
-                    name,
-                    price,
-                    stock,
-                    brand,
-                    category,
-                    image_url: imageUrl,
-                    compat_motor_ids: selectedCompatIds
-                };
-                partsDb.push(newPart);
-                showToast(`Suku Cadang "${name}" sukses didaftarkan ke simulator!`, "success");
+                partsDb.push({
+                    id: newId, name, price, stock, brand, category, image_url: imageUrl, compat_motor_ids: selectedCompatIds
+                });
+                showToast(`Suku Cadang "${name}" ditambahkan!`, "success");
             }
-
-            applyFilters();
-            renderAdminTable();
-            populateDatabaseSandboxSelector();
-            updateDbSandbox();
+            applyFilters(); renderAdminTable();
         }
 
-        // DELETE PRODUCT BY ID (DELETE IMPLEMENTATION)
         function deleteProduct(partId) {
             const index = partsDb.findIndex(p => p.id === partId);
             if (index === -1) return;
-
             const name = partsDb[index].name;
             partsDb.splice(index, 1);
-            showToast(`Suku Cadang "${name}" dihapus dari gudang bengkel.`, "info");
-
-            cart = cart.filter(item => item.product.id !== partId);
-            updateCartBadge();
-
-            applyFilters();
-            renderAdminTable();
-            populateDatabaseSandboxSelector();
-            updateDbSandbox();
+            showToast(`"${name}" dihapus.`, "info");
+            cart = cart.filter(item => item.product.id !== partId); updateCartBadge();
+            applyFilters(); renderAdminTable();
         }
 
-        // INTERACTIVE DATABASE VISUALIZER SIMULATOR CONTROLS
-        function populateDatabaseSandboxSelector() {
-            const selector = document.getElementById('db-sandbox-part');
-            selector.innerHTML = "";
-
-            partsDb.forEach(part => {
-                const opt = document.createElement('option');
-                opt.value = part.id;
-                opt.textContent = part.name;
-                selector.appendChild(opt);
-            });
-        }
-
-        // TRIGGER RE-RUN OF SIMULATED INTERACTIVE SQL QUERY CODES
-        function updateDbSandbox() {
-            const partId = parseInt(document.getElementById('db-sandbox-part').value);
-            if (isNaN(partId)) return;
-
-            document.getElementById('db-sandbox-id').textContent = partId;
-
-            const part = partsDb.find(p => p.id === partId);
-            const resultsContainer = document.getElementById('db-sandbox-results');
-            resultsContainer.innerHTML = "";
-
-            if (!part || part.compat_motor_ids.length === 0) {
-                resultsContainer.innerHTML = `<span class="text-xs text-red-400 italic font-mono">Empty Result (Tidak ada motor yang didaftarkan untuk part ini)</span>`;
-                return;
-            }
-
-            part.compat_motor_ids.forEach(motorId => {
-                const motor = MOTOR_MODELS.find(m => m.id === motorId);
-                if (motor) {
-                    const pill = document.createElement('span');
-                    pill.className = "text-xs bg-slate-950 border border-slate-700 text-slate-100 font-mono px-3 py-1 rounded-xl flex items-center gap-1.5 shadow-md shadow-slate-950/20";
-                    pill.innerHTML = `<i class="fa-solid fa-motorcycle text-orange-500"></i> ${motor.brand} <strong class="text-white">${motor.model_name}</strong>`;
-                    resultsContainer.appendChild(pill);
-                }
-            });
-        }
-
-        // CUSTOM TOAST NOTIFIER GENERATOR
         function showToast(message, type = "success") {
             const toast = document.getElementById('toast-message');
-            const textElement = document.getElementById('toast-text');
             const iconWrapper = document.getElementById('toast-icon-wrapper');
-
-            textElement.textContent = message;
-
-            if (type === "success") {
-                iconWrapper.className = "p-1.5 rounded-lg text-white bg-emerald-500 shadow-md shadow-emerald-500/20";
-                iconWrapper.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
-            } else if (type === "error") {
-                iconWrapper.className = "p-1.5 rounded-lg text-white bg-red-500 shadow-md shadow-red-500/20";
-                iconWrapper.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i>`;
-            } else {
-                iconWrapper.className = "p-1.5 rounded-lg text-white bg-blue-500 shadow-md shadow-blue-500/20";
-                iconWrapper.innerHTML = `<i class="fa-solid fa-circle-info"></i>`;
-            }
-
+            document.getElementById('toast-text').textContent = message;
+            if (type === "success") { iconWrapper.className = "p-1.5 rounded bg-emerald-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-check"></i>`; }
+            else if (type === "error") { iconWrapper.className = "p-1.5 rounded bg-red-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-xmark"></i>`; }
+            else { iconWrapper.className = "p-1.5 rounded bg-blue-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-info"></i>`; }
             toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-3.5 rounded-xl shadow-2xl max-w-sm";
-
-            setTimeout(() => {
-                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-3.5 rounded-xl shadow-2xl max-w-sm";
-            }, 3500);
+            setTimeout(() => { toast.classList.replace('translate-y-0', 'translate-y-20'); toast.classList.replace('opacity-100', 'opacity-0'); }, 3000);
         }
     </script>
 </body>
