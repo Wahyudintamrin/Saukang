@@ -19,7 +19,7 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #1e293b;
+            background: #f1f5f9; /* slate-100 */
         }
         ::-webkit-scrollbar-thumb {
             background: #f97316;
@@ -30,10 +30,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
 
     <!-- TOP NAVIGATION BAR -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo -->
@@ -42,24 +42,24 @@
                         <i class="fa-solid fa-gears text-2xl text-white animate-spin-slow"></i>
                     </div>
                     <div>
-                        <span class="text-xl font-extrabold tracking-tight text-white block">MOTOR<span class="text-orange-500">PART</span></span>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Gudang Sparepart Terlengkap</span>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 block">MOTOR<span class="text-orange-500">PART</span></span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Gudang Sparepart Terlengkap</span>
                     </div>
                 </div>
 
                 <!-- Main Tabs (Hanya Katalog yang tampil publik) -->
-                <nav class="hidden md:flex space-x-1 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
-                    <button onclick="switchTab('shop')" id="btn-tab-shop" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 bg-orange-600 text-white">
+                <nav class="hidden md:flex space-x-1 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+                    <button onclick="switchTab('shop')" id="btn-tab-shop" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 bg-orange-600 text-white shadow-sm">
                         <i class="fa-solid fa-motorcycle mr-2"></i>Katalog Toko
                     </button>
-                    <!-- Tab Khusus Admin (Disembunyikan secara default menggunakan class .admin-restricted dan .hidden) -->
-                    <button onclick="switchTab('admin')" id="btn-tab-admin" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-400 hover:text-white">
+                    <!-- Tab Khusus Admin -->
+                    <button onclick="switchTab('admin')" id="btn-tab-admin" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white">
                         <i class="fa-solid fa-screwdriver-wrench mr-2"></i>Admin Panel
                     </button>
-                    <button onclick="switchTab('database')" id="btn-tab-database" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-400 hover:text-white">
+                    <button onclick="switchTab('database')" id="btn-tab-database" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white">
                         <i class="fa-solid fa-database mr-2"></i>Database
                     </button>
-                    <button onclick="switchTab('mentor')" id="btn-tab-mentor" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-400 hover:text-white">
+                    <button onclick="switchTab('mentor')" id="btn-tab-mentor" class="admin-restricted hidden tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white">
                         <i class="fa-solid fa-chalkboard-user mr-2"></i>Ruang Mentor
                     </button>
                 </nav>
@@ -67,19 +67,19 @@
                 <!-- Status / Cart Button & Login -->
                 <div class="flex items-center space-x-3">
                     <!-- Tombol Login Admin -->
-                    <button onclick="openLoginModal()" id="btn-login" class="hidden sm:flex px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold rounded-xl transition-all border border-slate-700 items-center">
+                    <button onclick="openLoginModal()" id="btn-login" class="hidden sm:flex px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-semibold rounded-xl transition-all border border-slate-200 items-center shadow-sm">
                         <i class="fa-solid fa-lock mr-2 text-orange-500"></i> Login
                     </button>
                     
-                    <!-- Tombol Logout (Tersembunyi by default) -->
-                    <button onclick="handleLogout()" id="btn-logout" class="hidden px-4 py-2 bg-red-950 hover:bg-red-900 text-red-400 hover:text-white text-xs font-semibold rounded-xl transition-all border border-red-800 items-center shadow-lg shadow-red-900/20">
+                    <!-- Tombol Logout -->
+                    <button onclick="handleLogout()" id="btn-logout" class="hidden px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 text-xs font-semibold rounded-xl transition-all border border-red-200 items-center shadow-sm">
                         <i class="fa-solid fa-unlock mr-2"></i> Logout
                     </button>
 
                     <!-- Tombol Keranjang -->
-                    <button onclick="toggleCartModal()" class="relative p-2.5 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all duration-150 text-slate-200 border border-slate-700">
+                    <button onclick="toggleCartModal()" class="relative p-2.5 bg-white hover:bg-slate-50 rounded-xl transition-all duration-150 text-slate-700 border border-slate-200 shadow-sm">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
-                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-slate-900">0</span>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
                     </button>
                 </div>
             </div>
@@ -87,19 +87,19 @@
     </header>
 
     <!-- Mobile Sub-Navigation -->
-    <div class="md:hidden bg-slate-900 border-b border-slate-800 flex justify-around p-2 sticky top-20 z-30">
+    <div class="md:hidden bg-white border-b border-slate-200 flex justify-around p-2 sticky top-20 z-30 shadow-sm">
         <button onclick="switchTab('shop')" class="tab-btn-mob text-xs flex flex-col items-center text-orange-500" id="mob-tab-shop">
             <i class="fa-solid fa-motorcycle text-lg mb-1"></i>Katalog
         </button>
-        <button onclick="openLoginModal()" class="tab-btn-mob text-xs flex flex-col items-center text-slate-400" id="mob-btn-login">
+        <button onclick="openLoginModal()" class="tab-btn-mob text-xs flex flex-col items-center text-slate-500 hover:text-slate-900" id="mob-btn-login">
             <i class="fa-solid fa-lock text-lg mb-1"></i>Login
         </button>
         
         <!-- Tab Khusus Admin Mobile -->
-        <button onclick="switchTab('admin')" class="admin-restricted hidden tab-btn-mob text-xs flex flex-col items-center text-slate-400" id="mob-tab-admin">
+        <button onclick="switchTab('admin')" class="admin-restricted hidden tab-btn-mob text-xs flex flex-col items-center text-slate-500 hover:text-slate-900" id="mob-tab-admin">
             <i class="fa-solid fa-screwdriver-wrench text-lg mb-1"></i>CRUD
         </button>
-        <button onclick="switchTab('database')" class="admin-restricted hidden tab-btn-mob text-xs flex flex-col items-center text-slate-400" id="mob-tab-database">
+        <button onclick="switchTab('database')" class="admin-restricted hidden tab-btn-mob text-xs flex flex-col items-center text-slate-500 hover:text-slate-900" id="mob-tab-database">
             <i class="fa-solid fa-database text-lg mb-1"></i>Database
         </button>
     </div>
@@ -112,25 +112,25 @@
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Search & Filters Sidebar -->
                 <aside class="lg:col-span-1 space-y-6">
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-6">
+                    <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 space-y-6">
                         <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-filter text-orange-500 mr-2"></i>Saring Cari</h3>
-                            <button onclick="resetFilters()" class="text-xs text-orange-500 hover:underline">Reset</button>
+                            <h3 class="font-bold text-lg text-slate-900"><i class="fa-solid fa-filter text-orange-500 mr-2"></i>Saring Cari</h3>
+                            <button onclick="resetFilters()" class="text-xs text-orange-600 font-semibold hover:underline">Reset</button>
                         </div>
 
                         <!-- Keyword Search -->
                         <div class="space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Nama Suku Cadang</label>
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nama Suku Cadang</label>
                             <div class="relative">
-                                <input type="text" id="filter-search" oninput="applyFilters()" placeholder="Cari piston, rantai, ban..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all">
-                                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-slate-500 text-sm"></i>
+                                <input type="text" id="filter-search" oninput="applyFilters()" placeholder="Cari piston, rantai, ban..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:bg-white transition-all">
+                                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-slate-400 text-sm"></i>
                             </div>
                         </div>
 
                         <!-- Brand Filter (Honda, Yamaha, etc) -->
                         <div class="space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Merk Motor</label>
-                            <select id="filter-brand" onchange="onBrandFilterChange()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Merk Motor</label>
+                            <select id="filter-brand" onchange="onBrandFilterChange()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all cursor-pointer">
                                 <option value="all">Semua Merk</option>
                                 <option value="Honda">Honda</option>
                                 <option value="Yamaha">Yamaha</option>
@@ -141,16 +141,16 @@
 
                         <!-- Motor Compatibility Model Filter -->
                         <div class="space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tipe Motor (Kesesuaian)</label>
-                            <select id="filter-model" onchange="applyFilters()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Tipe Motor (Kesesuaian)</label>
+                            <select id="filter-model" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-all cursor-pointer">
                                 <option value="all">Semua Tipe Motor</option>
                             </select>
-                            <p class="text-[10px] text-slate-500 italic mt-1">🔧 Menampilkan suku cadang yang dijamin pas PNP</p>
+                            <p class="text-[10px] text-slate-500 italic mt-1 font-medium">🔧 Menampilkan suku cadang yang dijamin pas PNP</p>
                         </div>
 
                         <!-- Category Filter -->
                         <div class="space-y-2">
-                            <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Kategori Barang</label>
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Kategori Barang</label>
                             <div class="space-y-2" id="category-filter-group">
                                 <!-- Generated Dynamically -->
                             </div>
@@ -160,11 +160,11 @@
 
                 <!-- Product Catalog Display Area -->
                 <div class="lg:col-span-3 space-y-6">
-                    <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-4 rounded-xl">
-                        <span class="text-sm text-slate-400">Menampilkan <span id="product-count" class="text-orange-500 font-bold">0</span> Suku Cadang</span>
+                    <div class="flex items-center justify-between bg-white border border-slate-200 shadow-sm p-4 rounded-xl">
+                        <span class="text-sm text-slate-600 font-medium">Menampilkan <span id="product-count" class="text-orange-600 font-bold">0</span> Suku Cadang</span>
                         <div class="flex items-center space-x-2">
-                            <span class="text-xs text-slate-400">Urutkan:</span>
-                            <select id="filter-sort" onchange="applyFilters()" class="bg-slate-950 border border-slate-700 text-xs rounded-lg px-2 py-1 focus:outline-none focus:border-orange-500">
+                            <span class="text-xs font-bold text-slate-500">Urutkan:</span>
+                            <select id="filter-sort" onchange="applyFilters()" class="bg-slate-50 border border-slate-300 text-slate-700 text-xs rounded-lg px-2 py-1.5 focus:outline-none focus:border-orange-500 cursor-pointer font-medium">
                                 <option value="default">Pilihan Terbaik</option>
                                 <option value="cheap">Harga: Rendah ke Tinggi</option>
                                 <option value="expensive">Harga: Tinggi ke Rendah</option>
@@ -182,23 +182,23 @@
 
         <!-- TAB 2: ADMIN CRUD PANEL (Hanya bisa dilihat jika sudah login) -->
         <section id="tab-admin" class="tab-content hidden space-y-6">
-            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-6">
+            <div class="bg-white border border-slate-200 shadow-sm p-6 rounded-2xl space-y-6">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
                             <i class="fa-solid fa-gears text-orange-500"></i> Manajemen Stok Barang (CRUD)
                         </h2>
-                        <p class="text-slate-400 text-sm">Panel Admin: Tambah, Edit, Hapus, dan Ubah Kompatibilitas Barang di Gudang.</p>
+                        <p class="text-slate-500 text-sm mt-1">Panel Admin: Tambah, Edit, Hapus, dan Ubah Kompatibilitas Barang di Gudang.</p>
                     </div>
-                    <button onclick="openAddProductModal()" class="bg-orange-600 hover:bg-orange-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 self-start shadow-lg shadow-orange-500/20">
+                    <button onclick="openAddProductModal()" class="bg-orange-600 hover:bg-orange-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 self-start shadow-md shadow-orange-500/20">
                         <i class="fa-solid fa-plus"></i> Tambah Part Baru
                     </button>
                 </div>
 
-                <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950">
+                <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                            <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wider font-bold">
                                 <th class="py-4 px-6">ID / Suku Cadang</th>
                                 <th class="py-4 px-6">Kategori</th>
                                 <th class="py-4 px-6">Merk/Kompatibel</th>
@@ -207,7 +207,7 @@
                                 <th class="py-4 px-6 text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-table-body" class="divide-y divide-slate-800 text-sm text-slate-300">
+                        <tbody id="admin-table-body" class="divide-y divide-slate-200 text-sm text-slate-700">
                             <!-- Populated dynamically -->
                         </tbody>
                     </table>
@@ -217,26 +217,26 @@
 
         <!-- TAB 3: DATABASE SCHEMA VISUALIZATION -->
         <section id="tab-database" class="tab-content hidden space-y-8">
-            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-                <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+            <div class="bg-white border border-slate-200 shadow-sm p-6 rounded-2xl">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-database text-orange-500"></i> Desain Relasi Database (Many-to-Many)
                 </h2>
-                <div class="p-4 bg-slate-800 rounded-lg text-sm text-slate-300">
-                    Sistem database mensimulasikan penyimpanan relasional. Saat Anda mengunggah gambar menggunakan fitur baru, gambar diubah menjadi string Base64 panjang (disimpan di kolom `image_url` yang bertipe `LONGTEXT`).
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 mt-4 leading-relaxed">
+                    Sistem database mensimulasikan penyimpanan relasional. Saat Anda mengunggah gambar menggunakan fitur baru, gambar diubah menjadi string Base64 panjang (disimpan di kolom <code class="bg-slate-200 px-1 rounded text-slate-800">image_url</code> yang bertipe <code class="bg-slate-200 px-1 rounded text-slate-800">LONGTEXT</code>).
                 </div>
             </div>
         </section>
         
         <!-- TAB 4: MENTOR STUDY CORNER -->
         <section id="tab-mentor" class="tab-content hidden space-y-8">
-            <div class="bg-gradient-to-r from-slate-900 via-orange-950/20 to-slate-900 border border-orange-500/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                <div class="w-20 h-20 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-xl shadow-orange-500/10">
+            <div class="bg-gradient-to-r from-orange-50 via-white to-orange-50 border border-orange-200 shadow-sm rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-20 h-20 bg-orange-100 text-orange-600 border border-orange-200 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
                 <div class="space-y-2 text-center md:text-left">
-                    <h2 class="text-2xl font-bold text-white">Catatan Tambahan: Keamanan Simulasi</h2>
-                    <p class="text-slate-300 text-sm max-w-3xl leading-relaxed">
-                        Sistem Login di sini adalah <strong class="text-orange-400">simulasi Frontend JavaScript</strong> agar prototipe ini berjalan di Google Sites. Di dunia nyata, validasi login <strong class="text-red-400 underline">WAJIB</strong> dilakukan di Backend (PHP/NodeJS) menggunakan sistem *Session/Token* agar tidak bisa ditembus oleh peretas yang membaca kode sumber *browser*.
+                    <h2 class="text-2xl font-bold text-slate-900">Catatan Tambahan: Keamanan Simulasi</h2>
+                    <p class="text-slate-600 text-sm max-w-3xl leading-relaxed">
+                        Sistem Login di sini adalah <strong class="text-orange-600 font-bold">simulasi Frontend JavaScript</strong> agar prototipe ini berjalan di Google Sites. Di dunia nyata, validasi login <strong class="text-red-600 underline font-bold">WAJIB</strong> dilakukan di Backend (PHP/NodeJS) menggunakan sistem <em>Session/Token</em> agar tidak bisa ditembus oleh peretas yang membaca kode sumber <em>browser</em>.
                     </p>
                 </div>
             </div>
@@ -244,93 +244,93 @@
     </main>
 
     <!-- MODAL: LOGIN ADMIN -->
-    <div id="login-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl animate-scaleIn">
+    <div id="login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl animate-scaleIn">
             <div class="p-8 text-center space-y-6">
-                <div class="w-16 h-16 bg-orange-600/20 text-orange-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-2 border border-orange-500/30">
+                <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-2 border border-orange-200">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div class="space-y-1">
-                    <h3 class="font-bold text-white text-xl">Login Administrator</h3>
-                    <p class="text-xs text-slate-400">Masuk untuk mengelola stok & sparepart.</p>
+                    <h3 class="font-bold text-slate-900 text-xl">Login Administrator</h3>
+                    <p class="text-xs text-slate-500 font-medium">Masuk untuk mengelola stok & sparepart.</p>
                 </div>
                 
                 <form id="login-form" onsubmit="handleLoginSubmit(event)" class="space-y-4 text-left">
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400 uppercase">Username</label>
+                        <label class="text-xs font-bold text-slate-500 uppercase">Username</label>
                         <div class="relative">
-                            <input type="text" id="login-username" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-orange-500 pl-10" placeholder="Ketik: admin">
-                            <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-500 text-sm"></i>
+                            <input type="text" id="login-username" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white pl-10" placeholder="Ketik: admin">
+                            <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400 uppercase">Password</label>
+                        <label class="text-xs font-bold text-slate-500 uppercase">Password</label>
                         <div class="relative">
-                            <input type="password" id="login-password" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-orange-500 pl-10" placeholder="Ketik: admin123">
-                            <i class="fa-solid fa-key absolute left-3.5 top-3.5 text-slate-500 text-sm"></i>
+                            <input type="password" id="login-password" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white pl-10" placeholder="Ketik: admin123">
+                            <i class="fa-solid fa-key absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
                         </div>
                     </div>
-                    <p id="login-error" class="text-xs text-red-500 font-semibold hidden text-center pt-2"><i class="fa-solid fa-circle-exclamation mr-1"></i>Username atau password salah!</p>
+                    <p id="login-error" class="text-xs text-red-600 font-bold hidden text-center pt-2"><i class="fa-solid fa-circle-exclamation mr-1"></i>Username atau password salah!</p>
                     
-                    <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-xl hover:bg-orange-500 transition-all shadow-lg shadow-orange-500/20 mt-4">
+                    <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-xl hover:bg-orange-500 transition-all shadow-md shadow-orange-500/20 mt-4">
                         Masuk ke Dashboard
                     </button>
                 </form>
-                <button onclick="closeLoginModal()" class="text-xs text-slate-500 hover:text-white transition-colors">Batal, kembali ke Katalog</button>
+                <button onclick="closeLoginModal()" class="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors">Batal, kembali ke Katalog</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL: ADD / EDIT PRODUCT (Admin Only) -->
-    <div id="product-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn max-h-[90vh] overflow-y-auto">
-            <div class="bg-slate-800/80 px-6 py-4 border-b border-slate-700 flex justify-between items-center sticky top-0 z-10">
-                <h3 id="modal-title" class="font-bold text-white text-base">Tambah Part Baru</h3>
-                <button onclick="closeProductModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+    <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn max-h-[90vh] overflow-y-auto">
+            <div class="bg-slate-50/90 px-6 py-4 border-b border-slate-200 flex justify-between items-center sticky top-0 z-10 backdrop-blur">
+                <h3 id="modal-title" class="font-bold text-slate-900 text-base">Tambah Part Baru</h3>
+                <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-800"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             
             <form id="product-form" onsubmit="handleProductFormSubmit(event)" class="p-6 space-y-5">
                 <input type="hidden" id="modal-product-id">
                 
                 <div class="space-y-1">
-                    <label class="text-xs font-semibold text-slate-400">Nama Suku Cadang</label>
-                    <input type="text" id="modal-name" name="name" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                    <label class="text-xs font-bold text-slate-500 uppercase">Nama Suku Cadang</label>
+                    <input type="text" id="modal-name" name="name" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-colors">
                 </div>
 
-                <div class="p-4 rounded-xl border border-slate-700 bg-slate-950/50 space-y-4">
-                    <label class="text-xs font-bold text-white flex items-center gap-2">
+                <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-4 shadow-sm">
+                    <label class="text-xs font-bold text-slate-800 flex items-center gap-2">
                         <i class="fa-regular fa-image text-orange-500"></i> Penampilan Produk (Pilih Salah Satu)
                     </label>
                     <div class="space-y-1.5">
-                        <label class="text-[10px] text-slate-400 uppercase font-bold tracking-widest"><i class="fa-solid fa-file-arrow-up mr-1"></i> 1. Unggah File dari Perangkat</label>
-                        <input type="file" id="modal-image-file" accept="image/*" class="w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-orange-600 file:text-white hover:file:bg-orange-500 transition-all cursor-pointer bg-slate-900 border border-slate-800 rounded-lg p-1">
+                        <label class="text-[10px] text-slate-500 uppercase font-bold tracking-widest"><i class="fa-solid fa-file-arrow-up mr-1"></i> 1. Unggah File dari Perangkat</label>
+                        <input type="file" id="modal-image-file" accept="image/*" class="w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200 transition-all cursor-pointer bg-white border border-slate-300 rounded-lg p-1">
                     </div>
-                    <div class="flex items-center justify-center opacity-50">
-                        <div class="border-t border-slate-700 w-full"></div>
+                    <div class="flex items-center justify-center opacity-70">
+                        <div class="border-t border-slate-300 w-full"></div>
                         <span class="px-3 text-[9px] font-bold text-slate-400 uppercase">Atau</span>
-                        <div class="border-t border-slate-700 w-full"></div>
+                        <div class="border-t border-slate-300 w-full"></div>
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-[10px] text-slate-400 uppercase font-bold tracking-widest"><i class="fa-solid fa-link mr-1"></i> 2. Tempel Link URL Gambar</label>
-                        <input type="url" id="modal-image-url" name="image_url" placeholder="https://contoh.com/gambar-knalpot.jpg" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                        <label class="text-[10px] text-slate-500 uppercase font-bold tracking-widest"><i class="fa-solid fa-link mr-1"></i> 2. Tempel Link URL Gambar</label>
+                        <input type="url" id="modal-image-url" name="image_url" placeholder="https://contoh.com/gambar-knalpot.jpg" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-orange-500 transition-colors">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400">Harga (Rp)</label>
-                        <input type="number" id="modal-price" name="price" required min="1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                        <label class="text-xs font-bold text-slate-500 uppercase">Harga (Rp)</label>
+                        <input type="number" id="modal-price" name="price" required min="1" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-colors">
                     </div>
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400">Stok Awal</label>
-                        <input type="number" id="modal-stock" name="stock" required min="0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                        <label class="text-xs font-bold text-slate-500 uppercase">Stok Awal</label>
+                        <input type="number" id="modal-stock" name="stock" required min="0" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white transition-colors">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400">Merk Utama</label>
-                        <select id="modal-brand" name="brand" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                        <label class="text-xs font-bold text-slate-500 uppercase">Merk Utama</label>
+                        <select id="modal-brand" name="brand" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white cursor-pointer transition-colors">
                             <option value="Honda">Honda</option>
                             <option value="Yamaha">Yamaha</option>
                             <option value="Suzuki">Suzuki</option>
@@ -338,8 +338,8 @@
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-400">Kategori</label>
-                        <select id="modal-category" name="category" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                        <label class="text-xs font-bold text-slate-500 uppercase">Kategori</label>
+                        <select id="modal-category" name="category" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-orange-500 focus:bg-white cursor-pointer transition-colors">
                             <option value="Mesin">Mesin</option>
                             <option value="Kelistrikan">Kelistrikan</option>
                             <option value="Transmisi">Transmisi</option>
@@ -350,15 +350,15 @@
                 </div>
 
                 <div class="space-y-2">
-                    <label class="text-xs font-semibold text-slate-400 block">Kecocokan Model Motor</label>
-                    <div id="modal-compatibility-group" class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto p-2 bg-slate-950 rounded-xl border border-slate-800">
+                    <label class="text-xs font-bold text-slate-500 uppercase block">Kecocokan Model Motor</label>
+                    <div id="modal-compatibility-group" class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto p-2 bg-slate-50 rounded-xl border border-slate-300 shadow-inner">
                         <!-- Populated by JS -->
                     </div>
                 </div>
 
-                <div class="pt-4 border-t border-slate-800 flex justify-end space-x-3 sticky bottom-0 bg-slate-900 pb-2">
-                    <button type="button" onclick="closeProductModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-lg hover:bg-slate-700">Batal</button>
-                    <button type="submit" id="btn-submit" class="px-5 py-2 bg-orange-600 text-white text-xs font-semibold rounded-lg hover:bg-orange-500 shadow-md shadow-orange-500/10 flex items-center gap-2">
+                <div class="pt-4 border-t border-slate-200 flex justify-end space-x-3 sticky bottom-0 bg-white pb-2">
+                    <button type="button" onclick="closeProductModal()" class="px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200">Batal</button>
+                    <button type="submit" id="btn-submit" class="px-5 py-2 bg-orange-600 text-white text-xs font-bold rounded-lg hover:bg-orange-500 shadow-md shadow-orange-500/20 flex items-center gap-2 transition-colors">
                         <span>Simpan Data</span>
                     </button>
                 </div>
@@ -367,20 +367,20 @@
     </div>
 
     <!-- MODAL: SHOPPING CART -->
-    <div id="cart-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
-            <div class="bg-slate-800/80 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
-                <h3 class="font-bold text-white text-base"><i class="fa-solid fa-cart-shopping text-orange-500 mr-2"></i>Keranjang Pembelian</h3>
-                <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+    <div id="cart-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
+            <div class="bg-slate-50/90 px-6 py-4 border-b border-slate-200 flex justify-between items-center backdrop-blur">
+                <h3 class="font-bold text-slate-900 text-base"><i class="fa-solid fa-cart-shopping text-orange-500 mr-2"></i>Keranjang Pembelian</h3>
+                <button onclick="toggleCartModal()" class="text-slate-400 hover:text-slate-800"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="p-6 space-y-4">
                 <div id="cart-items-container" class="space-y-4 max-h-64 overflow-y-auto pr-1"></div>
-                <div class="pt-4 border-t border-slate-800 space-y-3">
+                <div class="pt-4 border-t border-slate-200 space-y-3">
                     <div class="flex justify-between text-sm font-semibold">
-                        <span class="text-slate-400">Total Tagihan:</span>
-                        <span id="cart-total" class="text-orange-500 text-lg font-bold">Rp 0</span>
+                        <span class="text-slate-600">Total Tagihan:</span>
+                        <span id="cart-total" class="text-orange-600 text-lg font-bold">Rp 0</span>
                     </div>
-                    <button onclick="checkoutOrder()" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2">
+                    <button onclick="checkoutOrder()" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md shadow-orange-500/20 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-credit-card"></i> Selesaikan Transaksi (Simulasi)
                     </button>
                 </div>
@@ -389,9 +389,9 @@
     </div>
 
     <!-- CUSTOM MESSAGE TOAST -->
-    <div id="toast-message" class="fixed bottom-5 right-5 z-[70] transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-3.5 rounded-xl shadow-2xl max-w-sm">
+    <div id="toast-message" class="fixed bottom-5 right-5 z-[70] transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 bg-white border border-slate-200 px-4 py-3.5 rounded-xl shadow-xl max-w-sm">
         <div id="toast-icon-wrapper" class="p-1.5 rounded-lg text-white"></div>
-        <div><span id="toast-text" class="text-xs text-slate-200 font-medium">Notifikasi</span></div>
+        <div><span id="toast-text" class="text-xs text-slate-800 font-bold">Notifikasi</span></div>
     </div>
 
     <!-- APPLICATION LOGIC IN JAVASCRIPT -->
@@ -480,34 +480,27 @@
             const mobBtnLogin = document.getElementById('mob-btn-login');
 
             if (isAdminLoggedIn) {
-                // Munculkan menu admin
                 restrictedElements.forEach(el => el.classList.remove('hidden'));
                 
-                // Atur tombol login/logout desktop
                 if(btnLogin) btnLogin.classList.add('hidden');
                 if(btnLogout) btnLogout.classList.remove('hidden');
                 
-                // Atur tombol mobile
                 if(mobBtnLogin) mobBtnLogin.classList.add('hidden');
             } else {
-                // Sembunyikan menu admin
                 restrictedElements.forEach(el => el.classList.add('hidden'));
                 
-                // Atur tombol login/logout desktop
                 if(btnLogin) {
                     btnLogin.classList.remove('hidden');
-                    btnLogin.classList.add('sm:flex'); // Maintain responsive display class
+                    btnLogin.classList.add('sm:flex');
                 }
                 if(btnLogout) btnLogout.classList.add('hidden');
                 
-                // Atur tombol mobile
                 if(mobBtnLogin) mobBtnLogin.classList.remove('hidden');
             }
         }
 
         // --- CORE NAVIGATION & UI FUNCTIONS ---
         function switchTab(tabId) {
-            // Proteksi rute rahasia
             if ((tabId === 'admin' || tabId === 'database' || tabId === 'mentor') && !isAdminLoggedIn) {
                 openLoginModal();
                 showToast("Akses ditolak! Silakan login admin terlebih dahulu.", "error");
@@ -520,24 +513,24 @@
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             document.getElementById(`tab-${tabId}`).classList.add('block');
             
-            // Set active class for desktop tabs
+            // Desktop tabs update
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-400 hover:text-white" + (btn.classList.contains('admin-restricted') ? " admin-restricted" : "");
+                btn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white" + (btn.classList.contains('admin-restricted') ? " admin-restricted" : "");
             });
             const activeDesktopBtn = document.getElementById(`btn-tab-${tabId}`);
             if (activeDesktopBtn) {
-                activeDesktopBtn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 bg-orange-600 text-white" + (activeDesktopBtn.classList.contains('admin-restricted') ? " admin-restricted" : "");
+                activeDesktopBtn.className = "tab-btn px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 bg-orange-600 text-white shadow-sm" + (activeDesktopBtn.classList.contains('admin-restricted') ? " admin-restricted" : "");
             }
 
-            // Set active class for mobile tabs
+            // Mobile tabs update
             document.querySelectorAll('.tab-btn-mob').forEach(btn => {
-                if (btn.id !== 'mob-btn-login') { // Abaikan tombol login
-                    btn.className = "tab-btn-mob text-xs flex flex-col items-center text-slate-400" + (btn.classList.contains('admin-restricted') ? " admin-restricted" : "");
+                if (btn.id !== 'mob-btn-login') {
+                    btn.className = "tab-btn-mob text-xs flex flex-col items-center text-slate-500 hover:text-slate-900" + (btn.classList.contains('admin-restricted') ? " admin-restricted" : "");
                 }
             });
             const activeMobileBtn = document.getElementById(`mob-tab-${tabId}`);
             if (activeMobileBtn) {
-                activeMobileBtn.className = "tab-btn-mob text-xs flex flex-col items-center text-orange-500" + (activeMobileBtn.classList.contains('admin-restricted') ? " admin-restricted" : "");
+                activeMobileBtn.className = "tab-btn-mob text-xs flex flex-col items-center text-orange-500 font-bold" + (activeMobileBtn.classList.contains('admin-restricted') ? " admin-restricted" : "");
             }
         }
 
@@ -566,10 +559,10 @@
                 button.type = "button"; button.onclick = () => selectCategoryFilter(cat);
                 button.id = `cat-btn-${cat.replace(/\s+/g, '')}`;
                 if (cat === "all") {
-                    button.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-500 bg-orange-950/20 text-orange-400 font-bold transition-all";
+                    button.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-200 bg-orange-50 text-orange-600 font-bold transition-all shadow-sm";
                     button.textContent = "🔧 Semua Kategori";
                 } else {
-                    button.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:text-white transition-all";
+                    button.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all shadow-sm";
                     button.textContent = `🔩 ${cat}`;
                 }
                 container.appendChild(button);
@@ -581,10 +574,10 @@
             const cats = ["all", "Mesin", "Kelistrikan", "Transmisi", "Sasis & Body", "Pengereman"];
             cats.forEach(c => {
                 const btn = document.getElementById(`cat-btn-${c.replace(/\s+/g, '')}`);
-                if (btn) btn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:text-white transition-all";
+                if (btn) btn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all shadow-sm";
             });
             const activeBtn = document.getElementById(`cat-btn-${category.replace(/\s+/g, '')}`);
-            if (activeBtn) activeBtn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-500 bg-orange-950/20 text-orange-400 font-bold transition-all";
+            if (activeBtn) activeBtn.className = "w-full text-left px-3 py-2 text-xs rounded-xl border border-orange-200 bg-orange-50 text-orange-600 font-bold transition-all shadow-sm";
             applyFilters();
         }
 
@@ -626,7 +619,7 @@
             const grid = document.getElementById('shop-grid');
             grid.innerHTML = "";
             if (products.length === 0) {
-                grid.innerHTML = `<div class="col-span-1 md:col-span-3 py-16 text-center text-slate-400"><i class="fa-solid fa-box-open text-4xl mb-3"></i><p>Suku Cadang Tidak Ditemukan</p></div>`;
+                grid.innerHTML = `<div class="col-span-1 md:col-span-3 py-16 text-center text-slate-500"><i class="fa-solid fa-box-open text-4xl mb-3 text-slate-300"></i><p class="font-medium">Suku Cadang Tidak Ditemukan</p></div>`;
                 return;
             }
 
@@ -635,32 +628,32 @@
                     const motor = MOTOR_MODELS.find(m => m.id === id);
                     return motor ? `${motor.brand} ${motor.model_name}` : '';
                 }).filter(name => name !== '');
-                const compatBadgesHtml = compatibleModels.map(name => `<span class="text-[10px] bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-800">${name}</span>`).join(' ');
+                const compatBadgesHtml = compatibleModels.map(name => `<span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200 font-semibold">${name}</span>`).join(' ');
                 const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(part.price);
 
                 const imgTag = part.image_url && part.image_url.trim() !== ""
                     ? `<img src="${part.image_url}" alt="${part.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-                       <div class="hidden absolute inset-0 flex flex-col items-center justify-center text-slate-700 bg-slate-900"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`
-                    : `<div class="absolute inset-0 flex flex-col items-center justify-center text-slate-700 bg-slate-900"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`;
+                       <div class="hidden absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-slate-100"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`
+                    : `<div class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-slate-100"><i class="${getCategoryIcon(part.category)} text-4xl"></i></div>`;
 
                 const cardHtml = `
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-orange-500/40 transition-all duration-200 shadow-lg group relative">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:border-orange-500/40 transition-all duration-200 shadow-sm hover:shadow-lg group relative">
                         <div class="flex justify-between items-center mb-3">
-                            <span class="text-[10px] uppercase font-extrabold text-orange-500 bg-orange-950/30 px-2 py-1 rounded-full">${part.category}</span>
-                            <span class="text-xs ${part.stock > 0 ? 'text-slate-400' : 'text-red-400'}">${part.stock > 0 ? `Stok: ${part.stock}` : 'Habis!'}</span>
+                            <span class="text-[10px] uppercase font-extrabold text-orange-600 bg-orange-100 px-2.5 py-1 rounded-full">${part.category}</span>
+                            <span class="text-xs font-bold ${part.stock > 0 ? 'text-slate-500' : 'text-red-500 bg-red-50 px-2 py-0.5 rounded'}">${part.stock > 0 ? `Stok: ${part.stock}` : 'Habis!'}</span>
                         </div>
-                        <div class="bg-slate-950 rounded-xl h-40 flex items-center justify-center relative border border-slate-800 mb-4 overflow-hidden">
+                        <div class="bg-slate-50 rounded-xl h-40 flex items-center justify-center relative border border-slate-100 mb-4 overflow-hidden">
                             ${imgTag}
                         </div>
                         <div class="space-y-1 mb-4">
-                            <h4 class="font-bold text-white text-sm truncate" title="${part.name}">${part.name}</h4>
-                            <p class="text-orange-500 font-extrabold text-base">${formattedPrice}</p>
+                            <h4 class="font-bold text-slate-900 text-sm truncate" title="${part.name}">${part.name}</h4>
+                            <p class="text-orange-600 font-extrabold text-base">${formattedPrice}</p>
                         </div>
                         <div class="space-y-1.5 mb-5 h-12 overflow-hidden">
                             <span class="text-[10px] font-bold text-slate-500 uppercase">PNP:</span>
                             <div class="flex flex-wrap gap-1">${compatBadgesHtml}</div>
                         </div>
-                        <button onclick="addToCart(${part.id})" ${part.stock === 0 ? 'disabled' : ''} class="w-full ${part.stock > 0 ? 'bg-slate-800 hover:bg-orange-600 text-slate-200 hover:text-white' : 'bg-slate-950 text-slate-600 cursor-not-allowed border-slate-800'} py-2.5 rounded-xl font-semibold text-xs transition-all"><i class="fa-solid fa-cart-plus"></i> Tambah</button>
+                        <button onclick="addToCart(${part.id})" ${part.stock === 0 ? 'disabled' : ''} class="w-full ${part.stock > 0 ? 'bg-slate-50 hover:bg-orange-600 text-slate-700 hover:text-white border-slate-200 hover:border-orange-600' : 'bg-slate-100 text-slate-400 cursor-not-allowed border-slate-200'} border py-2.5 rounded-xl font-bold text-xs transition-all"><i class="fa-solid fa-cart-plus"></i> Tambah</button>
                     </div>`;
                 grid.innerHTML += cardHtml;
             });
@@ -699,20 +692,23 @@
             const totalDisplay = document.getElementById('cart-total');
             container.innerHTML = "";
             if (cart.length === 0) {
-                container.innerHTML = `<div class="py-8 text-center text-slate-500">Keranjang kosong.</div>`;
+                container.innerHTML = `<div class="py-8 text-center text-slate-500 font-medium">Keranjang masih kosong.</div>`;
                 totalDisplay.textContent = "Rp 0"; return;
             }
             let grandTotal = 0;
             cart.forEach(item => {
                 grandTotal += item.product.price * item.quantity;
                 const itemHtml = `
-                    <div class="flex justify-between border-b border-slate-800 pb-3">
-                        <div class="w-1/2"><span class="text-xs font-bold text-white block truncate">${item.product.name}</span></div>
+                    <div class="flex justify-between border-b border-slate-200 pb-3">
+                        <div class="w-1/2">
+                            <span class="text-xs font-bold text-slate-900 block truncate">${item.product.name}</span>
+                            <span class="text-[10px] text-slate-500">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.product.price)}</span>
+                        </div>
                         <div class="flex items-center space-x-2">
-                            <button onclick="adjustCartQuantity(${item.product.id}, -1)" class="px-2 py-0.5 bg-slate-800 text-white rounded">-</button>
-                            <span class="text-xs text-white w-4 text-center">${item.quantity}</span>
-                            <button onclick="adjustCartQuantity(${item.product.id}, 1)" class="px-2 py-0.5 bg-slate-800 text-white rounded">+</button>
-                            <button onclick="removeFromCart(${item.product.id})" class="text-red-500 text-xs ml-2"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="adjustCartQuantity(${item.product.id}, -1)" class="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded transition-colors">-</button>
+                            <span class="text-xs text-slate-900 font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="adjustCartQuantity(${item.product.id}, 1)" class="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded transition-colors">+</button>
+                            <button onclick="removeFromCart(${item.product.id})" class="text-red-500 hover:text-red-600 text-xs ml-2"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>`;
                 container.innerHTML += itemHtml;
@@ -749,17 +745,17 @@
             const tbody = document.getElementById('admin-table-body');
             tbody.innerHTML = "";
             partsDb.forEach(part => {
-                const imgHtml = part.image_url ? `<img src="${part.image_url}" class="w-8 h-8 rounded object-cover shadow-sm">` : `<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-[10px] text-slate-500"><i class="${getCategoryIcon(part.category)}"></i></div>`;
+                const imgHtml = part.image_url ? `<img src="${part.image_url}" class="w-8 h-8 rounded object-cover shadow-sm border border-slate-200">` : `<div class="w-8 h-8 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] text-slate-400"><i class="${getCategoryIcon(part.category)}"></i></div>`;
                 const row = `
-                    <tr class="hover:bg-slate-900 border-b border-slate-800/50">
-                        <td class="py-3 px-6"><div class="flex items-center gap-3">${imgHtml}<div><span class="font-bold text-white text-sm block truncate w-40">${part.name}</span></div></div></td>
-                        <td class="py-3 px-6 text-xs text-slate-300">${part.category}</td>
-                        <td class="py-3 px-6 text-xs text-orange-400 font-bold">${part.brand}</td>
-                        <td class="py-3 px-6 text-sm font-bold text-white">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(part.price)}</td>
-                        <td class="py-3 px-6 text-xs">${part.stock} unit</td>
-                        <td class="py-3 px-6 text-center">
-                            <button onclick="openEditProductModal(${part.id})" class="p-1.5 bg-slate-800 hover:bg-blue-600 text-white rounded"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button onclick="deleteProduct(${part.id})" class="p-1.5 bg-slate-800 hover:bg-red-600 text-white rounded"><i class="fa-solid fa-trash"></i></button>
+                    <tr class="hover:bg-slate-50 border-b border-slate-200 transition-colors">
+                        <td class="py-3 px-6"><div class="flex items-center gap-3">${imgHtml}<div><span class="font-bold text-slate-900 text-sm block truncate w-40">${part.name}</span></div></div></td>
+                        <td class="py-3 px-6 text-xs text-slate-600 font-medium">${part.category}</td>
+                        <td class="py-3 px-6 text-xs text-orange-600 font-bold">${part.brand}</td>
+                        <td class="py-3 px-6 text-sm font-bold text-slate-900">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(part.price)}</td>
+                        <td class="py-3 px-6 text-xs font-semibold text-slate-700">${part.stock} unit</td>
+                        <td class="py-3 px-6 text-center space-x-1">
+                            <button onclick="openEditProductModal(${part.id})" class="p-1.5 bg-slate-100 border border-slate-200 text-slate-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 rounded transition-all"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="deleteProduct(${part.id})" class="p-1.5 bg-slate-100 border border-slate-200 text-slate-600 hover:text-white hover:bg-red-600 hover:border-red-600 rounded transition-all"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>`;
                 tbody.innerHTML += row;
@@ -771,15 +767,15 @@
             container.innerHTML = "";
             MOTOR_MODELS.forEach(motor => {
                 container.innerHTML += `
-                    <div class="flex items-center space-x-2 p-1.5 hover:bg-slate-900 rounded-lg">
-                        <input type="checkbox" id="modal-compat-cb-${motor.id}" name="compat_motor_ids[]" value="${motor.id}" class="rounded border-slate-700 bg-slate-950 text-orange-600 focus:ring-orange-500">
-                        <label for="modal-compat-cb-${motor.id}" class="text-xs text-slate-300 font-mono cursor-pointer select-none">${motor.brand} ${motor.model_name}</label>
+                    <div class="flex items-center space-x-2 p-1.5 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">
+                        <input type="checkbox" id="modal-compat-cb-${motor.id}" name="compat_motor_ids[]" value="${motor.id}" class="rounded border-slate-300 bg-white text-orange-600 focus:ring-orange-500 cursor-pointer w-4 h-4">
+                        <label for="modal-compat-cb-${motor.id}" class="text-xs text-slate-700 font-medium cursor-pointer select-none w-full">${motor.brand} ${motor.model_name}</label>
                     </div>`;
             });
         }
 
         function openAddProductModal() {
-            if(!isAdminLoggedIn) return; // Ekstra proteksi
+            if(!isAdminLoggedIn) return;
             document.getElementById('modal-title').textContent = "🔧 Tambah Sparepart Baru";
             document.getElementById('product-form').reset();
             document.getElementById('modal-product-id').value = "";
@@ -790,7 +786,7 @@
         }
 
         function openEditProductModal(partId) {
-            if(!isAdminLoggedIn) return; // Ekstra proteksi
+            if(!isAdminLoggedIn) return;
             const part = partsDb.find(p => p.id === partId);
             if (!part) return;
             document.getElementById('modal-title').textContent = "🛠️ Edit Suku Cadang";
@@ -903,10 +899,10 @@
             const toast = document.getElementById('toast-message');
             const iconWrapper = document.getElementById('toast-icon-wrapper');
             document.getElementById('toast-text').textContent = message;
-            if (type === "success") { iconWrapper.className = "p-1.5 rounded bg-emerald-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-check"></i>`; }
-            else if (type === "error") { iconWrapper.className = "p-1.5 rounded bg-red-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-xmark"></i>`; }
-            else { iconWrapper.className = "p-1.5 rounded bg-blue-500"; iconWrapper.innerHTML = `<i class="fa-solid fa-info"></i>`; }
-            toast.className = "fixed bottom-5 right-5 z-[70] transform translate-y-0 opacity-100 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-slate-700 px-4 py-3.5 rounded-xl shadow-2xl max-w-sm";
+            if (type === "success") { iconWrapper.className = "p-1.5 rounded bg-emerald-100 text-emerald-600"; iconWrapper.innerHTML = `<i class="fa-solid fa-check"></i>`; }
+            else if (type === "error") { iconWrapper.className = "p-1.5 rounded bg-red-100 text-red-600"; iconWrapper.innerHTML = `<i class="fa-solid fa-xmark"></i>`; }
+            else { iconWrapper.className = "p-1.5 rounded bg-blue-100 text-blue-600"; iconWrapper.innerHTML = `<i class="fa-solid fa-info"></i>`; }
+            toast.className = "fixed bottom-5 right-5 z-[70] transform translate-y-0 opacity-100 transition-all duration-300 flex items-center gap-3 bg-white border border-slate-200 px-4 py-3.5 rounded-xl shadow-xl max-w-sm";
             setTimeout(() => { toast.classList.replace('translate-y-0', 'translate-y-20'); toast.classList.replace('opacity-100', 'opacity-0'); }, 3000);
         }
     </script>
